@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - Чайхона Рохат</title>
+    <link rel="icon" type="image/png" href="{% static 'bookings/images/favicon.jpg' %}">
+    <style>
+        /* ===== ОБЩИЕ СТИЛИ ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #dacdd7;
+            color: #3d2b1f;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== ШАПКА ===== */
+        .header {
+            background: rgb(38, 53, 33);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid #d4a373;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-logo {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .header-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #d38146;
+            letter-spacing: 1px;
+        }
+
+        .header-title span {
+            font-weight: 300;
+            color: #a67c6b;
+            font-size: 16px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header a {
+            color: #d38146;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+
+        .header a:hover {
+            color: #fff;
+        }
+
+        .btn-back {
+            background: #d38146;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-back:hover {
+            background: #6b3410;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+        }
+
+        /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
+        .main-content {
+            padding: 40px 0;
+            min-height: 60vh;
+        }
+
+        .cart-title {
+            font-size: 36px;
+            color: #8b4513;
+            margin-bottom: 30px;
+            border-left: 5px solid #d4a373;
+            padding-left: 20px;
+        }
+
+        /* ===== ПУСТАЯ КОРЗИНА ===== */
+        .cart-empty {
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+            border-radius: 20px;
+            border: 2px dashed #e8d5c4;
+        }
+
+        .cart-empty h2 {
+            color: #a67c6b;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .cart-empty p {
+            color: #a67c6b;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .cart-empty .btn {
+            background: #8b4513;
+            color: white;
+            padding: 14px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .cart-empty .btn:hover {
+            background: #6b3410;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(139, 69, 19, 0.3);
+        }
+
+        /* ===== ЭЛЕМЕНТЫ КОРЗИНЫ ===== */
+        .cart-item {
+            background: white;
+            border-radius: 15px;
+            padding: 20px 25px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e8d5c4;
+            transition: all 0.3s;
+        }
+
+        .cart-item:hover {
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #3d2b1f;
+        }
+
+        .cart-item-price {
+            color: #a67c6b;
+            font-size: 14px;
+            margin-top: 3px;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cart-item-controls button {
+            background: #f5ede6;
+            border: 2px solid #e8d5c4;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3d2b1f;
+        }
+
+        .cart-item-controls button:hover {
+            background: #8b4513;
+            color: white;
+            border-color: #8b4513;
+            transform: scale(1.05);
+        }
+
+        .cart-item-controls .quantity {
+            font-size: 18px;
+            font-weight: 700;
+            min-width: 35px;
+            text-align: center;
+            color: #3d2b1f;
+        }
+
+        .cart-item-remove {
+            color: #a50e0e;
+            background: none !important;
+            border: none !important;
+            font-size: 22px;
+            cursor: pointer;
+            padding: 0 10px;
+            transition: all 0.3s;
+            width: auto !important;
+            height: auto !important;
+        }
+
+        .cart-item-remove:hover {
+            color: #ff0000;
+            transform: scale(1.3) !important;
+            background: none !important;
+            border: none !important;
+        }
+
+        /* ===== ИТОГ ===== */
+        .cart-total {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 25px;
+            border: 2px solid #d4a373;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 16px;
+            border-bottom: 1px solid #f0ece7;
+        }
+
+        .cart-total-row:last-of-type {
+            border-bottom: none;
+        }
+
+        .cart-total-row.total {
+            font-size: 24px;
+            font-weight: 700;
+            color: #8b4513;
+            border-top: 2px solid #e8d5c4;
+            padding-top: 15px;
+            margin-top: 5px;
+        }
+
+        .cart-total-row .label {
+            color: #5c3d2e;
+        }
+
+        .cart-total-row .value {
+            font-weight: 600;
+        }
+
+        .delivery-info {
+            color: #a67c6b;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+            padding: 12px;
+            background: #fcf9f7;
+            border-radius: 10px;
+            border: 1px solid #e8d5c4;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            padding: 16px;
+            background: #d38146;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-checkout:hover {
+            background: #6b3410;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 25px rgba(139, 69, 19, 0.3);
+        }
+
+        .btn-checkout:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-checkout .min-order {
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        /* ===== ПОДВАЛ ===== */
+        .footer {
+            background: #143909;
+            color: #e8d5c4;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-radius: 50px 50px 0 0;
+        }
+
+        .footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer h3 {
+            color: #d4a373;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .header-title {
+                font-size: 20px;
+            }
+
+            .header-right {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .cart-item-controls {
+                justify-content: center;
+            }
+
+            .cart-title {
+                font-size: 28px;
+            }
+
+            .cart-total-row.total {
+                font-size: 20px;
+            }
+
+            .btn-checkout {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .cart-item {
+                padding: 15px;
+            }
+
+            .cart-item-name {
+                font-size: 16px;
+            }
+
+            .cart-title {
+                font-size: 24px;
+                padding-left: 15px;
+            }
+
+            .cart-total {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== ШАПКА ========== -->
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <img src="{% static 'bookings/images/logo.jpg' %}" alt="Чайхана" class="header-logo">
+                <div class="header-title">
+                    Чайхона Рохат
+                    <span>| Уют и вкус</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="/">🍽 Меню</a>
+                <a href="/cart/" class="cart-link" style="color: #d38146; font-size: 20px;">
+                    🛒 Корзина
+                    <span id="cartCount" style="background: #a50e0e; color: white; font-size: 12px; font-weight: 700; border-radius: 50%; padding: 2px 8px; min-width: 20px; text-align: center; display: none;">0</span>
+                </a>
+                <button class="btn-back" onclick="window.location.href='/'">← На главную</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== ОСНОВНОЙ КОНТЕНТ ========== -->
+    <div class="main-content">
+        <div class="container">
+            <h1 class="cart-title">🛒 Моя корзина</h1>
+            <div id="cartContent">
+                <!-- Сюда будет рендериться корзина через JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== ПОДВАЛ ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div>
+                <h3>🍵 Чайхона Рохат</h3>
+                <p>Атмосфера востока, уют и вкусная еда для всей семьи</p>
+            </div>
+            <div>
+                <h3>📍 Адрес</h3>
+                <p>Тверецкий проезд, 20Ак1, посёлок городского типа Голубое</p>
+            </div>
+            <div>
+                <h3>📞 Контакты</h3>
+                <p>+7 (999) 123-45-67</p>
+                <p>chaikhana@mail.ru</p>
+                <p>Ежедневно: 11:00 - 23:00</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        //  КОРЗИНА
+        // ============================================
+
+        function getCart() {
+            try {
+                const cart = localStorage.getItem('cart_delivery');
+                return cart ? JSON.parse(cart) : [];
+            } catch {
+                return [];
+            }
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('cart_delivery', JSON.stringify(cart));
+            updateCartBadge();
+        }
+
+        function updateCartBadge() {
+            const cart = getCart();
+            const count = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+            const badge = document.getElementById('cartCount');
+            if (badge) {
+                if (count > 0) {
+                    badge.textContent = count;
+                    badge.style.display = 'inline';
+                } else {
+                    badge.style.display = 'none';
+                }
+            }
+        }
+
+        function renderCart() {
+            const cart = getCart();
+            const container = document.getElementById('cartContent');
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="cart-empty">
+                        <h2>🛒 Корзина пуста</h2>
+                        <p>Добавьте блюда из меню, чтобы оформить заказ</p>
+                        <a href="/" class="btn">🍽 Перейти в меню</a>
+                    </div>
+                `;
+                return;
+            }
+
+            const MIN_ORDER = 790;
+            const DELIVERY_COST = 150;
+            const subtotal = cart.reduce((sum, item) => sum + (item.price || 0) * (item.quantity || 1), 0);
+            const delivery = subtotal >= MIN_ORDER ? DELIVERY_COST : 0;
+            const total = subtotal + delivery;
+            const canCheckout = subtotal >= MIN_ORDER;
+
+            let html = '';
+
+            cart.forEach((item, index) => {
+                const itemTotal = (item.price || 0) * (item.quantity || 1);
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name || 'Блюдо'}</div>
+                            <div class="cart-item-price">${item.price || 0} ₽ × ${item.quantity || 1} = ${itemTotal} ₽</div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button onclick="changeQuantity(${index}, -1)">−</button>
+                            <span class="quantity">${item.quantity || 1}</span>
+                            <button onclick="changeQuantity(${index}, 1)">+</button>
+                            <button class="cart-item-remove" onclick="removeItem(${index})">✕</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                <div class="cart-total">
+                    <div class="cart-total-row">
+                        <span class="label">Сумма заказа</span>
+                        <span class="value">${subtotal} ₽</span>
+                    </div>
+                    <div class="cart-total-row">
+                        <span class="label">🚚 Доставка</span>
+                        <span class="value">${delivery > 0 ? delivery + ' ₽' : 'Бесплатно'}</span>
+                    </div>
+                    ${subtotal < MIN_ORDER ? `
+                        <div class="delivery-info">
+                            ⚠️ Минимальная сумма заказа: ${MIN_ORDER} ₽<br>
+                            Добавьте еще на ${MIN_ORDER - subtotal} ₽
+                        </div>
+                    ` : ''}
+                    <div class="cart-total-row total">
+                        <span class="label">Итого</span>
+                        <span class="value">${total} ₽</span>
+                    </div>
+                    <button class="btn-checkout" ${!canCheckout ? 'disabled' : ''} onclick="checkout()">
+                        ${canCheckout ? '🚚 Оформить заказ' : 'Добавьте товары на ' + (MIN_ORDER - subtotal) + ' ₽'}
+                        ${!canCheckout ? '<span class="min-order">Минимальный заказ ' + MIN_ORDER + ' ₽</span>' : ''}
+                    </button>
+                </div>
+            `;
+
+            container.innerHTML = html;
+            updateCartBadge();
+        }
+
+        function changeQuantity(index, delta) {
+            const cart = getCart();
+            if (!cart[index]) return;
+            
+            cart[index].quantity = (cart[index].quantity || 1) + delta;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            saveCart(cart);
+            renderCart();
+        }
+
+        function removeItem(index) {
+            const cart = getCart();
+            if (!cart[index]) return;
+            
+            cart.splice(index, 1);
+            saveCart(cart);
+            renderCart();
+        }
+
+        function checkout() {
+            const cart = getCart();
+            if (cart.length === 0) return;
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price || 0) * (item.quantity || 1), 0);
+            if (subtotal < 790) {
+                alert('Минимальная сумма заказа 790 ₽');
+                return;
+            }
+
+            window.location.href = '/checkout/';
+        }
+
+        // ============================================
+        //  ИНИЦИАЛИЗАЦИЯ
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCart();
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,2359 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чайхона Рохат</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'bookings/images/favicon.jpg' %}">
+    
+    <style>
+        /* ===== ОБЩИЕ СТИЛИ ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #dacdd7;
+            color: #3d2b1f;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== ШАПКА ===== */
+        /* ===== ШАПКА ===== */
+        .header {
+            background: rgb(38, 53, 33);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid #d4a373;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        /* ===== ЛЕВАЯ ЧАСТЬ ===== */
+        .header-left {
+            flex: 0 0 auto;
+        }
+
+        .header-phone {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .phone-label {
+            color: #a67c6b;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .phone-number {
+            color: #d38146;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .phone-number:hover {
+            color: #fff;
+        }
+
+        /* ===== ЦЕНТР ===== */
+        .header-center {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .header-logo {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .header-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #d38146;
+            letter-spacing: 1px;
+        }
+
+        .header-title span {
+            font-weight: 300;
+            color: #a67c6b;
+            font-size: 16px;
+        }
+
+        /* ===== ПРАВАЯ ЧАСТЬ ===== */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 0 0 auto;
+        }
+
+        .cart-icon-link {
+            position: relative;
+            text-decoration: none;
+            font-size: 28px;
+            color: #d38146;
+            transition: color 0.3s;
+        }
+
+        .cart-icon-link:hover {
+            color: #fff;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: #a50e0e;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 50%;
+            padding: 2px 8px;
+            min-width: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .btn-book {
+            background: #d38146;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+            white-space: nowrap;
+        }
+
+        .btn-book:hover {
+            background: #6b3410;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(139, 69, 19, 0.4);
+        }
+
+        /* ===== КНОПКА ВОЗВРАТА ===== */
+        #returnToBookingBtn {
+            background: #1e7e34;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: pulse 1.5s ease-in-out infinite;
+            white-space: nowrap;
+        }
+
+        #returnToBookingBtn:hover {
+            background: #166b2a;
+            transform: scale(1.02);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(30, 126, 52, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(30, 126, 52, 0); }
+        }
+
+        /* ===== НАВИГАЦИЯ ПО БЛЮДАМ ===== */
+        .menu-nav {
+            background: rgb(35, 51, 29);
+            padding: 15px 0;
+            border-bottom: 1px solid #e8d5c4;
+            position: sticky;
+            top: 81px;
+            z-index: 999;
+        }
+
+        .menu-nav .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .menu-nav a {
+            color: #5c3d2e;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: all 0.3s;
+            background: #f5ede6;
+        }
+
+        .menu-nav a:hover {
+            background: #8b4513;
+            color: white;
+        }
+
+        /* ===== ГЕРОЙ СЕКЦИЯ ===== */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), 
+                    url("{% static 'bookings/images/fon.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: rgb(252, 251, 251);
+            padding: 100px 0;
+            text-align: center;
+            border-radius: 0 0 50px 50px;
+            margin-bottom: 40px;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 22px;
+            opacity: 0.95;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== БЛОКИ С БЛЮДАМИ ===== */
+        .menu-section {
+            margin-bottom: 60px;
+        }
+
+        /* ===== ОТСТУП ДЛЯ ЯКОРЕЙ (чтобы не наезжала навигация) ===== */
+        .menu-section {
+            scroll-margin-top: 140px;  /* Отступ для скролла к якорю */
+        /* 140px = 81px (навигация) + 59px (запас) */
+        }
+
+        .menu-section h2 {
+            font-size: 32px;
+            color: #8b4513;
+            border-left: 5px solid #d4a373;
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
+            border: 1px solid #e8d5c4;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .menu-item-image {
+            width: 100%;
+            height: 200px;
+            background: #e8d5c4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a67c6b;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .menu-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .menu-item-body {
+            padding: 15px 20px 20px;
+        }
+
+        .menu-item-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #3d2b1f;
+        }
+
+        .menu-item-desc {
+            color: #a67c6b;
+            font-size: 14px;
+            margin: 5px 0 10px;
+            min-height: 40px;
+        }
+
+        .menu-item-price {
+            font-size: 22px;
+            font-weight: 700;
+            color: #8b4513;
+        }
+
+        .menu-item-price span {
+            font-size: 16px;
+            font-weight: 400;
+            color: #a67c6b;
+        }
+        
+        /* ===== КНОПКА В КОРЗИНУ ===== */
+        .btn-add-to-cart {
+            background: #8b4513;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            width: 100%;
+            font-weight: 600;
+        }
+
+        .btn-add-to-cart:hover {
+            background: #6b3410;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+        }
+
+        .btn-add-to-cart:active {
+            transform: scale(0.95);
+        }
+
+        .btn-add-to-cart.added {
+            background: #1e7e34;
+        }
+        
+        .btn-add-to-cart.added:hover {
+            background: #166b2a;
+        }
+
+        /* ===== ПОДВАЛ ===== */
+        .footer {
+            background: #143909;
+            color: #e8d5c4;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-radius: 50px 50px 0 0;
+        }
+
+        .footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer h3 {
+            color: #d4a373;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .footer .social {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .footer .social a {
+            color: #e8d5c4;
+            font-size: 24px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer .social a:hover {
+            color: #d4a373;
+        }
+
+        /* ===== МОДАЛЬНОЕ ОКНО ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #a67c6b;
+            background: none;
+            border: none;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #8b4513;
+        }
+
+        .modal-content h2 {
+            color: #8b4513;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+
+
+        /* ===== ФОРМА В МОДАЛКЕ ===== */
+        .modal .form-group {
+            margin-bottom: 18px;
+        }
+
+        .modal .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #5c3d2e;
+            margin-bottom: 5px;
+        }
+
+        .modal .form-group input,
+        .modal .form-group select,
+        .modal .form-group textarea {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #e8d5c4;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: inherit;
+            background: #fcf9f7;
+            transition: border-color 0.3s;
+        }
+
+        .modal .form-group input:focus,
+        .modal .form-group select:focus,
+        .modal .form-group textarea:focus {
+            outline: none;
+            border-color: #d4a373;
+        }
+
+        .modal .form-group textarea {
+            min-height: 60px;
+            resize: vertical;
+        }
+
+        .modal .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: #8b4513;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal .btn-submit:hover {
+            background: #6b3410;
+            transform: translateY(-2px);
+        }
+
+        .modal .btn-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .modal .tables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .modal .table-card {
+            background: #fcf9f7;
+            border: 2px solid #e8d5c4;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal .table-card:hover {
+            border-color: #d4a373;
+        }
+
+        .modal .table-card.selected {
+            border-color: #8b4513;
+            background: #f5ede6;
+        }
+
+        .modal .table-card .number {
+            font-size: 22px;
+            font-weight: 700;
+            color: #8b4513;
+        }
+
+        .modal .table-card .capacity {
+            font-size: 12px;
+            color: #a67c6b;
+        }
+
+        .modal .message {
+            padding: 12px;
+            border-radius: 10px;
+            margin: 15px 0;
+            display: none;
+        }
+
+        .modal .message.success {
+            display: block;
+            background: #e6f4ea;
+            color: #1e7e34;
+            border: 1px solid #b7dfc9;
+        }
+
+        .modal .message.error {
+            display: block;
+            background: #fce8e6;
+            color: #a50e0e;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* ===== TOAST УВЕДОМЛЕНИЕ ===== */
+        .toast {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          background: #1e7e34;
+          color: white;
+          padding: 18px 25px;
+          border-radius: 12px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+          display: none;
+          align-items: center;
+          gap: 15px;
+          min-width: 300px;
+          max-width: 450px;
+          z-index: 9999;
+          animation: slideIn 0.5s ease;
+          border-left: 5px solid #28a745;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .toast.show {
+            display: flex;
+        }
+
+        .toast-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .toast-content {
+                  flex: 1;
+        }
+
+        .toast-title {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 3px;
+        }
+
+        .toast-message {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            opacity: 0.7;
+            padding: 0 5px;
+            transition: opacity 0.3s;
+            flex-shrink: 0;
+        }
+
+        .toast-close:hover {
+            opacity: 1;
+        }
+
+        /* Анимация появления */
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Анимация исчезновения */
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        .toast.hiding {
+            animation: slideOut 0.4s ease forwards;
+        }
+
+        /* Адаптив для мобильных */
+        @media (max-width: 600px) {
+            .toast {
+                bottom: 15px;
+                right: 15px;
+                left: 15px;
+                min-width: auto;
+                padding: 15px 20px;
+            }
+        }
+
+        /* ===== TOAST ДЛЯ ОШИБОК (дополнительно) ===== */
+        .toast.error {
+            background: #a50e0e;
+            border-left-color: #dc3545;
+        }
+
+        .toast.error .toast-icon {
+            content: "❌";
+        }
+
+        /* ===== TOAST ДЛЯ ИНФО (дополнительно) ===== */
+        .toast.info {
+            background: #0c5460;
+            border-left-color: #17a2b8;
+        }
+
+        .toast.info .toast-icon {
+            content: "ℹ️";
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .header-title {
+                font-size: 20px;
+            }
+
+            .btn-book {
+                padding: 10px 25px;
+                font-size: 14px;
+            }
+
+            .menu-nav .container {
+                gap: 10px;
+            }
+
+            .menu-nav a {
+                font-size: 14px;
+                padding: 6px 14px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 15px;
+            }
+
+            .modal-content {
+                padding: 25px;
+                margin: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .menu-item-image {
+                height: 140px;
+            }
+
+            .menu-item-name {
+                font-size: 15px;
+            }
+
+            .menu-item-price {
+                font-size: 18px;
+            }
+        }
+
+        /* ===== КНОПКА ВОЗВРАТА К БРОНИРОВАНИЮ ===== */
+            #returnToBookingBtn {
+                background: #1e7e34;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 30px;
+                font-size: 14px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s;
+                animation: pulse 1.5s ease-in-out infinite;
+            }
+
+            #returnToBookingBtn:hover {
+                background: #166b2a;
+                transform: scale(1.02);
+            }
+
+            @keyframes pulse {
+                0%, 100% { box-shadow: 0 0 0 0 rgba(30, 126, 52, 0.4); }
+                50% { box-shadow: 0 0 0 8px rgba(30, 126, 52, 0); }
+            }
+
+            /* ===== БЛОК ВЫБОРА СТОЛА + БЛЮД ===== */
+            .food-choice-step {
+                display: none;
+                text-align: center;
+                padding: 15px;
+                background: #fcf9f7;
+                border-radius: 12px;
+                margin: 15px 0;
+                border: 1px solid #e8d5c4;
+            }
+
+            .food-choice-step.active {
+                display: block;
+            }
+
+            .food-choice-step .selected-info {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            .food-choice-step .selected-info strong {
+                color: #8b4513;
+            }
+
+            .food-choice-step .btn-food-choice {
+                background: #8b4513;
+                color: white;
+                border: none;
+                padding: 12px 30px;
+                border-radius: 10px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s;
+                margin-top: 10px;
+            }
+
+            .food-choice-step .btn-food-choice:hover {
+                background: #6b3410;
+                transform: translateY(-2px);
+            }
+
+            .food-choice-step .btn-secondary {
+                background: #e8d5c4;
+                color: #5c3d2e;
+                border: none;
+                padding: 12px 30px;
+                border-radius: 10px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s;
+                margin-top: 10px;
+                margin-left: 10px;
+            }
+
+            .food-choice-step .btn-secondary:hover {
+                background: #dcc4b0;
+            }
+
+
+            /* ===== СЛАЙДЕР ===== */
+            .hero-slider {
+                position: relative;
+                width: 100%;
+                height: 550px;
+                overflow: hidden;
+                border-radius: 0 0 50px 50px;
+                margin-bottom: 40px;
+            }
+
+            .slider-container {
+                position: relative;
+                width: 100%;
+                height: 100%;
+            }
+
+            .slider-track {
+                display: flex;
+                width: 100%;
+                height: 100%;
+                transition: transform 0.7s ease-in-out;
+            }
+
+            .slide {
+                min-width: 100%;
+                height: 100%;
+                flex-shrink: 0;
+                opacity: 0;
+                transition: opacity 0.7s ease-in-out;
+                position: relative;
+            }
+
+            .slide.active {
+                opacity: 1;
+            }
+
+            .slide-bg {
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 40px;
+            }
+
+
+            .slide-content {
+                color: white;
+                max-width: 700px;
+            }
+
+            .slide-content h1 {
+                font-size: 52px;
+                margin-bottom: 15px;
+                text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+            }
+
+            .slide-content p {
+                font-size: 22px;
+                opacity: 0.95;
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            }
+
+            /* ===== КНОПКИ СЛАЙДЕРА ===== */
+            .slider-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.5);
+                color: white;
+                border: none;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                font-size: 30px;
+                cursor: pointer;
+                z-index: 10;
+                transition: all 0.3s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .slider-btn:hover {
+                background: rgba(211, 129, 70, 0.8);
+                transform: translateY(-50%) scale(1.1);
+            }
+
+            .slider-btn.prev {
+                left: 20px;
+            }
+
+            .slider-btn.next {
+                right: 20px;
+            }
+
+            /* ===== ТОЧКИ (ИНДИКАТОРЫ) ===== */
+            .slider-dots {
+                position: absolute;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 12px;
+                z-index: 10;
+            }
+
+            .slider-dots .dot {
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.4);
+                cursor: pointer;
+                transition: all 0.3s;
+                border: 2px solid transparent;
+            }
+
+            .slider-dots .dot.active {
+                background: #d38146;
+                border-color: white;
+                transform: scale(1.2);
+            }
+
+            .slider-dots .dot:hover {
+                background: rgba(255, 255, 255, 0.8);
+            }
+
+            /* ===== АДАПТИВ СЛАЙДЕРА ===== */
+            @media (max-width: 768px) {
+                .hero-slider {
+                    height: 400px;
+                    border-radius: 0 0 30px 30px;
+                }
+
+                .slide-content h1 {
+                    font-size: 32px;
+                }
+
+                .slide-content p {
+                    font-size: 18px;
+                }
+
+                .slider-btn {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 24px;
+                }
+
+                .slider-btn.prev {
+                    left: 10px;
+                }
+
+                .slider-btn.next {
+                    right: 10px;
+                }
+
+                .slider-dots .dot {
+                    width: 10px;
+                    height: 10px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .hero-slider {
+                    height: 320px;
+                    border-radius: 0 0 20px 20px;
+                }
+
+                .slide-content h1 {
+                    font-size: 24px;
+                }
+
+                .slide-content p {
+                    font-size: 15px;
+                }
+
+                .slider-btn {
+                    width: 32px;
+                    height: 32px;
+                    font-size: 18px;
+                }
+
+                .slider-dots {
+                    bottom: 15px;
+                    gap: 8px;
+                }
+
+                .slider-dots .dot {
+                    width: 8px;
+                    height: 8px;
+                }
+            }
+    </style>
+</head>
+<body>
+
+    <!-- ========== ШАПКА ========== -->
+    <header class="header">
+        <div class="container">
+            <!-- ЛЕВАЯ ЧАСТЬ: Закажите онлайн + телефон -->
+            <div class="header-left">
+                <div class="header-phone">
+                    <span class="phone-label">📞 Закажите онлайн или позвоните</span>
+                    <a href="tel:+79104160799" class="phone-number">+7 (910) 416-07-99</a>
+                </div>
+            </div>
+
+            <!-- ЦЕНТР: Логотип + название -->
+            <div class="header-center">
+                <img src="{% static 'bookings/images/logo.jpg' %}" alt="Чайхана" class="header-logo">
+                <div class="header-title">
+                    Чайхона Рохат
+                    <span>| Уют и вкус</span>
+                </div>
+            </div>
+
+            <!-- ПРАВАЯ ЧАСТЬ: Корзина + бронирование -->
+            <div class="header-right">
+                <!-- Кнопка возврата к бронированию -->
+                <button id="returnToBookingBtn" style="display: none; background: #1e7e34; color: white; border: none; padding: 10px 20px; border-radius: 30px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
+                    📅 Вернуться к бронированию
+                </button>
+                
+                <a href="/cart/" class="cart-icon-link" style="position: relative; text-decoration: none; font-size: 28px; color: #d38146;">
+                    🛒
+                    <span id="cartCount" class="cart-badge" style="display: none; position: absolute; top: -8px; right: -12px; background: #a50e0e; color: white; font-size: 12px; font-weight: 700; border-radius: 50%; padding: 2px 8px; min-width: 20px; text-align: center;">0</span>
+                </a>
+                <button class="btn-book" id="openModalBtn">📅 Забронировать стол</button>
+            </div>
+        </div>
+    </header>
+
+    
+
+    <!-- ========== ГЕРОЙ ========== -->
+    <!-- ========== СЛАЙДЕР ========== -->
+    <!-- ========== СЛАЙДЕР ========== -->
+     
+    <section class="hero-slider">
+        <div class="slider-container">
+            <div class="slider-track" id="sliderTrack">
+                <!-- Слайд 1: существующий фон -->
+                <div class="slide active">
+                    <div class="slide-bg" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('{% static "bookings/images/fon.jpg" %}');">
+                        <div class="slide-content">
+                            <h1>🍵 Добро пожаловать в Чайхану</h1>
+                            <p>Атмосфера востока, вкусная еда и уютный отдых для всей семьи</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Слайд 2 -->
+                <div class="slide active">
+                    <div class="slide-bg" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('{% static "bookings/images/slide1.jpg" %}');">
+                        <div class="slide-content">
+                            <h1>🎵 Живая музыка</h1>
+                            <p>Каждую пятницу и субботу в зале европейской и русской кухни</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Слайд 3 -->
+                <div class="slide">
+                    <div class="slide-bg" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('{% static "bookings/images/slider/jivmuz.jpg" %}');">
+                        <div class="slide-content">
+                            <h1>🍽️ Уютный интерьер</h1>
+                            <p>Проведите время в атмосфере востока</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Слайд 4 -->
+                <div class="slide">
+                    <div class="slide-bg" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('{% static "bookings/images/slider/slide3.jpg" %}');">
+                        <div class="slide-content">
+                            <h1>🥘 Традиционные супы</h1>
+                            <p>Согревающие блюда для всей семьи</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Кнопки управления -->
+            <button class="slider-btn prev" id="sliderPrev">‹</button>
+            <button class="slider-btn next" id="sliderNext">›</button>
+
+            <!-- Индикаторы (точки) -->
+            <div class="slider-dots" id="sliderDots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== НАВИГАЦИЯ ПО БЛЮДАМ ========== -->
+    <nav class="menu-nav">
+        <div class="container">
+            <a href="#soups"> Супы</a>
+            <a href="#salads"> Салаты</a>
+            <a href="#grill"> Мангал</a>
+            <a href="#drinks"> Напитки</a>
+        </div>
+    </nav>
+
+    <!-- ========== БЛОКИ С БЛЮДАМИ ========== -->
+    <div class="container">
+
+        <!-- СУПЫ -->
+        <section class="menu-section" id="soups">
+            <h2> Супы</h2>
+            <div class="menu-grid">
+                <!-- Блюдо 1 -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/shurpa.png' %}" alt="Шурпа" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Шурпа</div>
+                        <div class="menu-item-desc">Наваристый суп с бараниной и овощами</div>
+                        <div class="menu-item-price">450 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="1">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Блюдо 2 -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/lagman.jpg' %}" alt="Лагман" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Лагман</div>
+                        <div class="menu-item-desc">Традиционный суп с домашней лапшой и мясом</div>
+                        <div class="menu-item-price">420 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="2">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Блюдо 3 -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/lagman uigurskiy.jpg' %}" alt="Лагман уйгурский" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Лагман уйгурский</div>
+                        <div class="menu-item-desc">Суп с маленькими пельменями в бульоне</div>
+                        <div class="menu-item-price">390 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="3">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Блюдо 4 -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Солянка" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Солянка мясная</div>
+                        <div class="menu-item-desc">Нежный суп </div>
+                        <div class="menu-item-price">350 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- САЛАТЫ -->
+        <section class="menu-section" id="salads">
+            <h2> Салаты</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/olivie.jpg' %}" alt="Оливье" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Оливье</div>
+                        <div class="menu-item-desc">Классический салат с курицей и маринованными огурцами</div>
+                        <div class="menu-item-price">320 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="5">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/cezar.jpg' %}" alt="Цезарь" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Цезарь с курицей</div>
+                        <div class="menu-item-desc">С курицей, пармезаном и соусом Цезарь</div>
+                        <div class="menu-item-price">380 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="6">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/vostok salat.jpg' %}" alt="Восток" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Восточный салат</div>
+                        <div class="menu-item-desc">Свежие овощи с зеленью и лимонным соком</div>
+                        <div class="menu-item-price">280 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="7">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/grecheskiy.jpg' %}" alt="Греческий" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Греческий салат</div>
+                        <div class="menu-item-desc">С фетой, оливками и свежими овощами</div>
+                        <div class="menu-item-price">340 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="8">🛒 В корзину</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- МАНГАЛ -->
+        <section class="menu-section" id="grill">
+            <h2> Мангал</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/shshlik.jpg' %}" alt="Шашлык" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Шашлык из баранины</div>
+                        <div class="menu-item-desc">На углях с пряностями, подается с соусом</div>
+                        <div class="menu-item-price">650 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="9">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/lulyz.png' %}" alt="Люля-кебаб" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Люля-кебаб</div>
+                        <div class="menu-item-desc">Мясной фарш на шпажках, запеченный на углях</div>
+                        <div class="menu-item-price">590 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="10">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/dorado.jpg' %}" alt="дорадо" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Дорадо на мангале</div>
+                        <div class="menu-item-desc">Со специями и чесноком</div>
+                        <div class="menu-item-price">520 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="11">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/ovoshi.png' %}" alt="Овощи" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Овощи на мангале</div>
+                        <div class="menu-item-desc">Болгарский перец, кабачки, баклажаны</div>
+                        <div class="menu-item-price">380 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="12">🛒 В корзину</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- НАПИТКИ -->
+        <section class="menu-section" id="drinks">
+            <h2> Напитки</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/chai.jpg' %}" alt="Чай" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Зеленый чай</div>
+                        <div class="menu-item-desc">Классический, с жасмином или мятой</div>
+                        <div class="menu-item-price">150 ₽ <span>/ чайник</span></div>
+                        <button class="btn-add-to-cart" data-id="13">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/kofe.jpg' %}" alt="Кофе" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Кофе</div>
+                        <div class="menu-item-desc">Эспрессо, капучино, латте</div>
+                        <div class="menu-item-price">180 ₽ <span>/ чашка</span></div>
+                        <button class="btn-add-to-cart" data-id="14">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/limonad.png' %}" alt="Компот" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Компот из сухофруктов</div>
+                        <div class="menu-item-desc">Домашний компот, как у бабушки</div>
+                        <div class="menu-item-price">160 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="15">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/mors.jpg' %}" alt="Морс" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Морс</div>
+                        <div class="menu-item-desc">Клюквенный или брусничный</div>
+                        <div class="menu-item-price">170 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="16">🛒 В корзину</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ========== ПОДВАЛ ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div>
+                <h3> Чайхона Рохат</h3>
+                <p>Атмосфера востока, уют и вкусная еда для всей семьи</p>
+            </div>
+            <div>
+                <h3> Адрес</h3>
+                <p>Тверецкий проезд, 20Ак1, посёлок городского типа Голубое</p>
+                
+            </div>
+            <div>
+                <h3> Контакты</h3>
+                <p> +7 (999) 123-45-67</p>
+                <p> chaikhana@mail.ru</p>
+                <p> Ежедневно: 11:00 - 23:00</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== МОДАЛЬНОЕ ОКНО ========== -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModalBtn">&times;</button>
+            
+            <h2> Бронирование столика</h2>
+            
+            <!-- Сообщения -->
+            <div id="modalMessage" class="message"></div>
+            
+            <!-- Шаг 1: Дата и время -->
+            <div class="form-group">
+                <label for="modalDate"> Дата</label>
+                <input type="date" id="modalDate" required>
+            </div>
+            <div class="form-group">
+                <label for="modalTime"> Время</label>
+                <input type="time" id="modalTime" required>
+            </div>
+            <div class="form-group">
+                <label for="modalGuests"> Количество гостей</label>
+                <select id="modalGuests">
+                    <option value="1">1 человек</option>
+                    <option value="2">2 человека</option>
+                    <option value="3">3 человека</option>
+                    <option value="4" selected>4 человека</option>
+                    <option value="5">5 человек</option>
+                    <option value="6">6 человек</option>
+                    <option value="7">7 человек</option>
+                    <option value="8">8 человек</option>
+                    <option value="9">9 человек</option>
+                    <option value="10">10+ человек</option>
+                </select>
+            </div>
+
+            <button class="btn-submit" id="modalCheckTables">🔍 Проверить свободные столы</button>
+
+            <!-- Список столов -->
+            <div id="modalTablesContainer" style="display: none; margin-top: 15px;">
+                <p style="font-weight: 600; color: #5c3d2e;">Выберите столик:</p>
+                <div class="tables-grid" id="modalTablesGrid"></div>
+            </div>
+
+            <!-- Блок выбора блюд (НОВЫЙ) -->
+            <div id="foodChoiceStep" class="food-choice-step">
+                <div class="selected-info">
+                    ✅ Вы выбрали <strong id="selectedTableDisplay">Стол #4</strong>
+                    <br>
+                    <span style="color: #a67c6b; font-size: 14px;" id="selectedTableTime">на 19:00 27.08.2026</span>
+                </div>
+                <div>
+                    <button class="btn-food-choice" id="chooseFoodBtn">🍽 Выбрать блюда к столу</button>
+                    <button class="btn-secondary" id="skipFoodBtn">🕐 Только стол</button>
+                </div>
+            </div>
+
+            <!-- Шаг 2: Данные клиента -->
+            <div id="modalClientForm" style="display: none; margin-top: 20px;">
+
+                <!-- БЛОК ДЛЯ ОТОБРАЖЕНИЯ БЛЮД (НОВЫЙ) -->
+                <div id="confirmItems" style="background: #fcf9f7; border-radius: 12px; padding: 15px; margin: 15px 0; border: 1px solid #e8d5c4;">
+                    <p style="color: #a67c6b; text-align: center;">Блюда не выбраны</p>
+                </div>
+                <div id="confirmTotal" style="font-size: 20px; font-weight: 700; color: #8b4513; text-align: right; padding: 10px 0; border-top: 2px solid #e8d5c4; margin-top: 10px;">
+                    0 ₽
+                </div>
+
+                <div class="form-group">
+                    <label for="modalClientName">👤 Ваше имя</label>
+                    <input type="text" id="modalClientName" placeholder="Например: Иван">
+                </div>
+                <div class="form-group">
+                    <label for="modalClientPhone">📞 Телефон</label>
+                    <input type="tel" id="modalClientPhone" placeholder="+7 999 123-45-67">
+                </div>
+                <div class="form-group">
+                    <label for="modalComment">💬 Комментарий (пожелания)</label>
+                    <textarea id="modalComment" placeholder="Особые пожелания, аллергии, праздник..."></textarea>
+                </div>
+                <button class="btn-submit" id="modalSubmitBooking">✅ Забронировать</button>
+            </div>
+        </div>
+        <!-- ========== TOAST УВЕДОМЛЕНИЕ ========== -->
+        <div id="toastNotification" class="toast">
+           <div class="toast-icon">✅</div>
+            <div class="toast-content">
+                <div class="toast-title">Успешно!</div>
+                <div class="toast-message" id="toastMessage">Бронирование создано!</div>
+            </div>
+            <button class="toast-close" id="toastClose">&times;</button>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        //  ПЕРЕМЕННЫЕ
+        // ============================================
+        const modal = document.getElementById('bookingModal');
+        const openBtn = document.getElementById('openModalBtn');
+        const closeBtn = document.getElementById('closeModalBtn');
+
+        const dateInput = document.getElementById('modalDate');
+        const timeInput = document.getElementById('modalTime');
+        const guestsSelect = document.getElementById('modalGuests');
+        const checkBtn = document.getElementById('modalCheckTables');
+
+        const tablesContainer = document.getElementById('modalTablesContainer');
+        const tablesGrid = document.getElementById('modalTablesGrid');
+        const clientForm = document.getElementById('modalClientForm');
+        const messageEl = document.getElementById('modalMessage');
+
+        const clientName = document.getElementById('modalClientName');
+        const clientPhone = document.getElementById('modalClientPhone');
+        const comment = document.getElementById('modalComment');
+        const submitBtn = document.getElementById('modalSubmitBooking');
+
+        let selectedTable = null;
+
+        // ============================================
+        //  ОТКРЫТИЕ / ЗАКРЫТИЕ МОДАЛКИ
+        // ============================================
+        openBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            resetModal();
+            setDefaultDate();
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        function openModal() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            resetModal();
+            setDefaultDate();
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            // ❌ НЕ ОЧИЩАЕМ КОРЗИНУ ЗДЕСЬ
+            // ❌ НЕ МЕНЯЕМ КНОПКИ ЗДЕСЬ
+            
+            // Если пользователь закрыл модалку, но данные бронирования есть — кнопка возврата остаётся
+            // Если данных нет — возвращаем кнопки в обычный режим
+            const tempData = sessionStorage.getItem('booking_temp');
+            if (!tempData) {
+                document.querySelectorAll('.btn-add-to-cart').forEach(btn => {
+                    btn.dataset.cartKey = 'cart_delivery';
+                    btn.textContent = '🛒 В корзину';
+                });
+                document.getElementById('returnToBookingBtn').style.display = 'none';
+            }
+        }
+
+        function setDefaultDate() {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            dateInput.value = `${yyyy}-${mm}-${dd}`;
+            dateInput.min = `${yyyy}-${mm}-${dd}`;
+            
+            const hours = String(today.getHours()).padStart(2, '0');
+            const minutes = String(today.getMinutes()).padStart(2, '0');
+            timeInput.value = `${hours}:${minutes}`;
+        }
+
+        function resetModal() {
+            tablesContainer.style.display = 'none';
+            clientForm.style.display = 'none';
+            selectedTable = null;
+            messageEl.className = 'message';
+            messageEl.style.display = 'none';
+            clientName.value = '';
+            clientPhone.value = '';
+            comment.value = '';
+            checkBtn.disabled = false;
+            checkBtn.textContent = '🔍 Проверить свободные столы';
+            submitBtn.disabled = false;
+            submitBtn.textContent = '✅ Забронировать';
+
+            document.getElementById('foodChoiceStep').classList.remove('active');
+            document.getElementById('modalCheckTables').style.display = 'block';
+            document.getElementById('returnToBookingBtn').style.display = 'none';
+            submitBtn.textContent = '✅ Забронировать';
+            
+            // ⭐ ОЧИЩАЕМ КОРЗИНУ ПРИ ОТКРЫТИИ МОДАЛКИ
+            // clearCart('cart_booking');
+            
+            // Возвращаем кнопки в обычный режим
+            document.querySelectorAll('.btn-add-to-cart').forEach(btn => {
+                btn.dataset.cartKey = 'cart_delivery';
+                btn.textContent = '🛒 В корзину';
+            });
+        }
+
+        function showModalMessage(text, type = 'info') {
+            messageEl.textContent = text;
+            messageEl.className = 'message ' + type;
+            messageEl.style.display = 'block';
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 5000);
+        }
+
+        // ============================================
+        //  ПРОВЕРКА СТОЛОВ
+        // ============================================
+        checkBtn.addEventListener('click', async function() {
+            const date = dateInput.value;
+            const time = timeInput.value;
+
+            if (!date || !time) {
+                showModalMessage('Пожалуйста, выберите дату и время!', 'error');
+                return;
+            }
+
+            this.disabled = true;
+            this.textContent = '⏳ Загрузка...';
+            showModalMessage('Ищем свободные столики...', 'info');
+
+            try {
+                const response = await fetch(`/api/tables?date=${date}&time=${time}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    if (data.length === 0) {
+                        showModalMessage('😔 На это время все столики заняты. Выберите другое время.', 'error');
+                        tablesContainer.style.display = 'none';
+                        clientForm.style.display = 'none';
+                    } else {
+                        renderModalTables(data);
+                        tablesContainer.style.display = 'block';
+                        clientForm.style.display = 'none';
+                        selectedTable = null;
+                        showModalMessage(`Найдено ${data.length} свободных столиков! Выберите подходящий.`, 'success');
+                    }
+                } else {
+                    showModalMessage(data.error || 'Ошибка при загрузке столов', 'error');
+                }
+            } catch (error) {
+                showModalMessage('Ошибка соединения с сервером', 'error');
+                console.error(error);
+            } finally {
+                this.disabled = false;
+                this.textContent = '🔍 Проверить свободные столы';
+            }
+        });
+
+        // ============================================
+        //  ОТРИСОВКА СТОЛОВ В МОДАЛКЕ
+        // ============================================
+        function renderModalTables(tables) {
+            tablesGrid.innerHTML = '';
+
+            tables.forEach(table => {
+                const card = document.createElement('div');
+                card.className = 'table-card';
+                card.dataset.id = table.id;
+                card.innerHTML = `
+                    <div class="number">#${table.table_number}</div>
+                    <div class="capacity">👥 ${table.capacity} чел</div>
+                `;
+
+                card.addEventListener('click', () => {
+                    document.querySelectorAll('.table-card').forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+                    selectedTable = table.id;
+                    
+                    // Показываем шаг с выбором блюд
+                    showFoodChoiceStep();
+                    showModalMessage('Вы выбрали столик! Хотите добавить блюда?', 'success');
+                });
+
+                tablesGrid.appendChild(card);
+            });
+        }
+
+        // ============================================
+        //  ОТПРАВКА БРОНИРОВАНИЯ
+        // ============================================
+        // ============================================
+        //  ОТПРАВКА БРОНИ (ОБЫЧНАЯ И С БЛЮДАМИ)
+        // ============================================
+        submitBtn.addEventListener('click', async function() {
+            // Проверяем, есть ли у нас сохранённые данные бронирования
+            const tempData = JSON.parse(sessionStorage.getItem('booking_temp'));
+            
+            if (tempData) {
+                // Если есть — значит мы возвращаемся из меню и нужно отправить бронь с блюдами
+                await submitBookingWithFood();
+            } else {
+                // Если нет — обычная бронь без блюд
+                await submitBookingOnly();
+            }
+        });
+
+        // ============================================
+        //  ОТПРАВКА БРОНИ БЕЗ БЛЮД
+        // ============================================
+        async function submitBookingOnly() {
+            if (!selectedTable) {
+                showModalMessage('Сначала выберите столик!', 'error');
+                return;
+            }
+
+            const name = clientName.value.trim();
+            const phone = clientPhone.value.trim();
+            const commentText = comment.value.trim();
+            const date = dateInput.value;
+            const time = timeInput.value;
+            const guests = guestsSelect.value;
+
+            if (!name || !phone) {
+                showModalMessage('Пожалуйста, укажите имя и телефон!', 'error');
+                return;
+            }
+
+            if (phone.length < 10) {
+                showModalMessage('Введите корректный номер телефона', 'error');
+                return;
+            }
+
+            const bookingData = {
+                table: selectedTable,
+                client_name: name,
+                client_phone: phone,
+                guests_count: parseInt(guests),
+                date: date,
+                time: time,
+                comment: commentText
+            };
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Отправка...';
+
+            try {
+                const response = await fetch('/api/bookings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(bookingData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showToast(data.message, 'success');
+                    showModalMessage('✅ ' + data.message, 'success');
+                    setTimeout(() => {
+                        closeModal();
+                        resetModal();
+                    }, 4000);
+                } else {
+                    const errorMsg = data.error || 'Ошибка при бронировании';
+                    showModalMessage('❌ ' + errorMsg, 'error');
+                    showToast(errorMsg, 'error');
+                }
+            } catch (error) {
+                showModalMessage('❌ Ошибка соединения с сервером', 'error');
+                console.error(error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '✅ Забронировать';
+            }
+        }
+
+        // ============================================
+        //  ИНИЦИАЛИЗАЦИЯ
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            setDefaultDate();
+        });
+
+        // ============================================
+        //  TOAST УВЕДОМЛЕНИЯ
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toastNotification');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = toast.querySelector('.toast-icon');
+            const toastTitle = toast.querySelector('.toast-title');
+    
+            // Убираем старые классы
+            toast.classList.remove('error', 'info', 'hiding');
+    
+           // Устанавливаем тип
+            if (type === 'success') {
+                toast.style.background = '#1e7e34';
+                toast.style.borderLeftColor = '#28a745';
+                toastIcon.textContent = '✅';
+                toastTitle.textContent = 'Успешно!';
+            } else if (type === 'error') {
+             toast.style.background = '#a50e0e';
+            toast.style.borderLeftColor = '#dc3545';
+            toastIcon.textContent = '❌';
+            toastTitle.textContent = 'Ошибка!';
+            } else if (type === 'info') {
+            toast.style.background = '#0c5460';
+            toast.style.borderLeftColor = '#17a2b8';
+            toastIcon.textContent = 'ℹ️';
+            toastTitle.textContent = 'Информация';
+            }
+    
+        toastMessage.textContent = message;
+        toast.classList.add('show');
+    
+            // Автоматическое скрытие через 5 секунд
+        clearTimeout(window.toastTimeout);
+        window.toastTimeout = setTimeout(() => {
+            hideToast();
+        }, 5000);
+        }
+
+        function hideToast() {
+        const toast = document.getElementById('toastNotification');
+        toast.classList.add('hiding');
+        setTimeout(() => {
+            toast.classList.remove('show', 'hiding');
+        }, 400);
+        }
+
+        // Закрытие по кнопке
+        document.getElementById('toastClose').addEventListener('click', hideToast);
+
+        // Закрытие по клику на тост (опционально)
+        document.getElementById('toastNotification').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideToast();
+            }
+        });
+
+        // ============================================
+        //  КОРЗИНА (универсальная)
+        // ============================================
+
+        // Получить корзину по ключу
+        function getCart(key = 'cart_delivery') {
+            try {
+                const cart = localStorage.getItem(key);
+                return cart ? JSON.parse(cart) : [];
+            } catch (e) {
+                console.error('Ошибка чтения корзины:', e);
+                return [];
+            }
+        }
+
+        // Сохранить корзину по ключу
+        function saveCart(cart, key = 'cart_delivery') {
+            localStorage.setItem(key, JSON.stringify(cart));
+            updateCartBadge();
+            console.log(`💾 Сохранено в localStorage: ${key}`, cart);
+        }
+
+        // Очистить корзину по ключу
+       function clearCart(key = 'cart_delivery') {
+            localStorage.removeItem(key);
+            console.log(`🗑️ Корзина ${key} очищена`);
+            updateCartBadge();
+        }
+        
+        // Обновить значок корзины (суммарно)
+        function updateCartBadge() {
+            const deliveryCart = getCart('cart_delivery');
+            const bookingCart = getCart('cart_booking');
+            const totalCount = deliveryCart.reduce((sum, item) => sum + (item.quantity || 0), 0) +
+                            bookingCart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+            const badge = document.getElementById('cartCount');
+            if (badge) {
+                if (totalCount > 0) {
+                    badge.textContent = totalCount;
+                    badge.style.display = 'block';
+                } else {
+                    badge.style.display = 'none';
+                }
+            }
+        }
+
+        // Добавить товар в корзину (по умолчанию в доставку)
+       function addToCart(productId, productName, productPrice, buttonElement, key = 'cart_delivery') {
+            const id = String(productId);
+            const name = String(productName || 'Блюдо');
+            const price = Number(productPrice) || 0;
+            
+            let cart = getCart(key);
+            const existing = cart.find(item => item.id === id);
+            
+            if (existing) {
+                existing.quantity = (existing.quantity || 0) + 1;
+                existing.name = name;
+                existing.price = price;
+            } else {
+                cart.push({
+                    id: id,
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            // ⭐ ИСПОЛЬЗУЕМ ПЕРЕДАННЫЙ КЛЮЧ, А НЕ ЖЁСТКИЙ 'cart_delivery'
+            localStorage.setItem(key, JSON.stringify(cart));
+            console.log(`💾 Прямое сохранение в ${key}:`, cart);
+            
+            updateCartBadge();
+            
+            // Анимация кнопки
+            if (buttonElement) {
+                const originalText = buttonElement.textContent;
+                buttonElement.textContent = '✅ Добавлено';
+                buttonElement.classList.add('added');
+                setTimeout(() => {
+                    buttonElement.textContent = originalText || '🛒 В корзину';
+                    buttonElement.classList.remove('added');
+                }, 1500);
+            }
+        }
+
+        // ============================================
+        //  ИНИЦИАЛИЗАЦИЯ
+        // ============================================
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartBadge();
+            
+            document.querySelectorAll('.btn-add-to-cart').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    const menuItem = this.closest('.menu-item');
+                    if (!menuItem) {
+                        console.error('❌ Не найден .menu-item');
+                        return;
+                    }
+                    
+                    // ID из data-id кнопки
+                    const id = this.dataset.id;
+                    
+                    // Название из .menu-item-name
+                    const nameElement = menuItem.querySelector('.menu-item-name');
+                    const name = nameElement ? nameElement.textContent.trim() : 'Блюдо';
+                    
+                    // Цена из .menu-item-price (берем только число)
+                    const priceElement = menuItem.querySelector('.menu-item-price');
+                    let price = 0;
+                    if (priceElement) {
+                        const priceText = priceElement.textContent.trim();
+                        const priceMatch = priceText.match(/(\d+)/);
+                        if (priceMatch) {
+                            price = parseInt(priceMatch[0]);
+                        }
+                    }
+                    
+                    console.log('📦 Добавляем:', { id, name, price });
+                    
+                    const cartKey = this.dataset.cartKey || 'cart_delivery';
+                    console.log('📦 Добавляем в корзину:', cartKey, { id, name, price });
+                    
+                    addToCart(id, name, price, this, cartKey);
+                });
+            });
+        });
+
+        // ============================================
+        //  БРОНИРОВАНИЕ С ВЫБОРОМ БЛЮД
+        // ============================================
+
+        // Переменная для временного хранения данных брони
+        let tempBookingData = null;
+
+        // Показать шаг с выбором блюд
+        function showFoodChoiceStep() {
+            const date = dateInput.value;
+            const time = timeInput.value;
+            const tableCard = document.querySelector('.table-card.selected');
+            let tableName = 'Стол #' + selectedTable;
+            if (tableCard) {
+                const nameEl = tableCard.querySelector('.name');
+                if (nameEl) {
+                    tableName = nameEl.textContent.trim() || 'Стол #' + selectedTable;
+                }
+            }
+            
+            document.getElementById('selectedTableDisplay').textContent = tableName;
+            document.getElementById('selectedTableTime').textContent = `на ${time || '--:--'} ${date || '----.--.--'}`;
+            
+            // Скрываем список столов и показываем блок выбора блюд
+            document.getElementById('modalTablesContainer').style.display = 'none';
+            document.getElementById('foodChoiceStep').classList.add('active');
+            document.getElementById('modalCheckTables').style.display = 'none';
+        }
+
+        // Сохранить данные бронирования
+        function saveBookingTemp() {
+            tempBookingData = {
+                date: dateInput.value,
+                time: timeInput.value,
+                table: selectedTable,
+                guests: guestsSelect.value
+            };
+            sessionStorage.setItem('booking_temp', JSON.stringify(tempBookingData));
+        }
+
+        // Перейти к выбору блюд
+        function goToMenu() {
+            if (!selectedTable) {
+                showModalMessage('Сначала выберите столик!', 'error');
+                return;
+            }
+            
+            // ⭐ ЖЁСТКАЯ ОЧИСТКА КОРЗИНЫ БРОНИРОВАНИЯ
+            localStorage.removeItem('cart_booking');
+            console.log('🗑️ cart_booking удалена из localStorage');
+            
+            // Проверяем, что очистилось
+            const check = localStorage.getItem('cart_booking');
+            console.log('📦 Проверка cart_booking после очистки:', check);
+            
+            saveBookingTemp();
+            closeModal();
+            document.getElementById('returnToBookingBtn').style.display = 'block';
+
+            document.querySelectorAll('.btn-add-to-cart').forEach(btn => {
+                btn.dataset.cartKey = 'cart_booking';
+                btn.textContent = '🍽 Добавить к брони';
+            });
+            
+            showToast('🍽 Выберите блюда к вашему визиту!', 'info');
+        }
+
+        // Вернуться к бронированию
+        function returnToBooking() {
+            const data = JSON.parse(sessionStorage.getItem('booking_temp'));
+            if (!data) {
+                showToast('❌ Данные бронирования не найдены', 'error');
+                return;
+            }
+            
+            // Открываем модалку
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Подставляем данные
+            dateInput.value = data.date;
+            timeInput.value = data.time;
+            guestsSelect.value = data.guests;
+            
+            // Выбираем стол визуально
+            document.querySelectorAll('.table-card').forEach(card => {
+                card.classList.remove('selected');
+                if (card.dataset.id == data.table) {
+                    card.classList.add('selected');
+                }
+            });
+            selectedTable = data.table;
+            
+            // Показываем форму клиента
+            document.getElementById('modalTablesContainer').style.display = 'none';
+            document.getElementById('foodChoiceStep').classList.remove('active');
+            document.getElementById('modalCheckTables').style.display = 'none';
+            clientForm.style.display = 'block';
+
+            // ⭐ ЗАГРУЖАЕМ БЛЮДА ИЗ КОРЗИНЫ В МОДАЛКУ
+            loadCartItemsToModal('cart_booking');
+            
+            // Меняем текст кнопки
+            submitBtn.textContent = '✅ Забронировать стол с блюдами';
+
+            document.getElementById('returnToBookingBtn').style.display = 'none';
+            
+            showModalMessage('Вы вернулись к бронированию! Заполните данные.', 'success');
+        }
+
+        // Пропустить выбор блюд (только стол)
+        function skipFood() {
+            document.getElementById('foodChoiceStep').classList.remove('active');
+            clientForm.style.display = 'block';
+            submitBtn.textContent = '✅ Забронировать';
+            sessionStorage.removeItem('booking_temp');
+            
+            // ⭐ ОЧИЩАЕМ КОРЗИНУ
+            clearCart('cart_booking');
+            
+            // Возвращаем кнопки в обычный режим
+            document.querySelectorAll('.btn-add-to-cart').forEach(btn => {
+                btn.dataset.cartKey = 'cart_delivery';
+                btn.textContent = '🛒 В корзину';
+            });
+            document.getElementById('returnToBookingBtn').style.display = 'none';
+            
+            showModalMessage('Вы выбрали столик! Заполните данные.', 'success');
+        }
+
+        // ============================================
+        //  ОБРАБОТЧИКИ ДЛЯ НОВЫХ КНОПОК
+        // ============================================
+
+        // Кнопка "Выбрать блюда к столу"
+        document.getElementById('chooseFoodBtn').addEventListener('click', goToMenu);
+
+        // Кнопка "Только стол"
+        document.getElementById('skipFoodBtn').addEventListener('click', skipFood);
+
+        // Кнопка возврата в шапке
+        document.getElementById('returnToBookingBtn').addEventListener('click', returnToBooking);
+
+
+        function loadCartItemsToModal() {
+            const cart = getCart('cart_booking');
+            const container = document.getElementById('confirmItems');
+            const totalSpan = document.getElementById('confirmTotal');
+            
+            // Если контейнер не существует — создаём его
+            let itemsContainer = container;
+            if (!itemsContainer) {
+                // Создаём контейнер для блюд в модалке
+                const clientForm = document.getElementById('modalClientForm');
+                const newContainer = document.createElement('div');
+                newContainer.id = 'confirmItems';
+                newContainer.style.cssText = 'background: #fcf9f7; border-radius: 12px; padding: 15px; margin: 15px 0; border: 1px solid #e8d5c4;';
+                newContainer.innerHTML = '<p style="color: #a67c6b; text-align: center;">Блюда не выбраны</p>';
+                clientForm.insertBefore(newContainer, clientForm.firstChild);
+                itemsContainer = newContainer;
+            }
+            
+            // Добавляем блок с итогом, если его нет
+            let totalBlock = totalSpan;
+            if (!totalBlock) {
+                const newTotal = document.createElement('div');
+                newTotal.id = 'confirmTotal';
+                newTotal.style.cssText = 'font-size: 20px; font-weight: 700; color: #8b4513; text-align: right; padding: 10px 0; border-top: 2px solid #e8d5c4; margin-top: 10px;';
+                newTotal.textContent = '0 ₽';
+                itemsContainer.after(newTotal);
+                totalBlock = newTotal;
+            }
+            
+            if (cart.length === 0) {
+                itemsContainer.innerHTML = '<p style="color: #a67c6b; text-align: center;">Блюда не выбраны</p>';
+                totalBlock.textContent = '0 ₽';
+                return;
+            }
+            
+            let html = '<ul style="list-style: none; padding: 0; margin: 0;">';
+            let total = 0;
+            cart.forEach(item => {
+                const subtotal = (item.price || 0) * (item.quantity || 1);
+                total += subtotal;
+                html += `<li style="padding: 4px 0; font-size: 15px; border-bottom: 1px solid #f0ece7; display: flex; justify-content: space-between;">
+                    <span>${item.name || 'Блюдо'} × ${item.quantity || 1}</span>
+                    <span>${subtotal} ₽</span>
+                </li>`;
+            });
+            html += '</ul>';
+            itemsContainer.innerHTML = html;
+            totalBlock.textContent = total + ' ₽';
+        }
+
+
+        // ============================================
+        //  ОТПРАВКА БРОНИ С БЛЮДАМИ
+        // ============================================
+        async function submitBookingWithFood() {
+            console.log('🚀 submitBookingWithFood вызвана');
+            
+            const name = clientName.value.trim();
+            const phone = clientPhone.value.trim();
+            const commentText = comment.value.trim();
+
+            if (!name || !phone) {
+                showToast('❌ Укажите имя и телефон', 'error');
+                return;
+            }
+
+            const data = JSON.parse(sessionStorage.getItem('booking_temp'));
+            if (!data) {
+                showToast('❌ Данные бронирования не найдены', 'error');
+                return;
+            }
+
+            // ⭐ Получаем корзину
+            const cart = getCart('cart_booking');
+            console.log('📦 Корзина бронирования перед отправкой:', cart);
+
+            if (cart.length === 0) {
+                showToast('❌ Выберите хотя бы одно блюдо', 'error');
+                return;
+            }
+
+            // ⭐ Формируем items из корзины
+            const items = cart.map(item => ({
+                name: item.name || 'Блюдо',
+                quantity: item.quantity || 1,
+                price: item.price || 0
+            }));
+
+            console.log('📦 Отправляемые items:', items);
+
+            const bookingData = {
+                table: data.table,
+                client_name: name,
+                client_phone: phone,
+                guests_count: parseInt(data.guests),
+                date: data.date,
+                time: data.time,
+                comment: commentText,
+                items: items
+            };
+
+            console.log('📦 Полный bookingData:', bookingData);
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Отправка...';
+
+            try {
+                const response = await fetch('/api/bookings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(bookingData)
+                });
+
+                const result = await response.json();
+                console.log('📥 Ответ сервера:', result);
+
+                if (response.ok) {
+                    // ⭐ Очищаем только корзину БРОНИРОВАНИЯ
+                    clearCart('cart_booking');
+                    sessionStorage.removeItem('booking_temp');
+                    document.getElementById('returnToBookingBtn').style.display = 'none';
+                    
+                    // Возвращаем кнопки "В корзину" в обычный режим
+                    document.querySelectorAll('.btn-add-to-cart').forEach(btn => {
+                        btn.dataset.cartKey = 'cart_delivery';
+                        btn.textContent = '🛒 В корзину';
+                    });
+
+                    showToast('✅ Бронь успешно создана!', 'success');
+                    showModalMessage('✅ ' + result.message, 'success');
+                    updateCartBadge();
+                    setTimeout(() => {
+                        closeModal();
+                        resetModal();
+                    }, 4000);
+                } else {
+                    showToast('❌ ' + (result.error || 'Ошибка при бронировании'), 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '✅ Забронировать стол с блюдами';
+                }
+            } catch (error) {
+                console.error('❌ Ошибка:', error);
+                showToast('❌ Ошибка соединения с сервером', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = '✅ Забронировать стол с блюдами';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            // ⭐ ОЧИЩАЕМ КОРЗИНУ БРОНИРОВАНИЯ ПРИ ЗАГРУЗКЕ СТРАНИЦЫ
+            localStorage.removeItem('cart_booking');
+            console.log('🗑️ cart_booking очищена при загрузке страницы');
+            
+            // Обновляем значок корзины
+            updateCartBadge();
+            
+            // Убеждаемся, что кнопки "В корзину" в обычном режиме
+            document.querySelectorAll('.btn-add-to-cart').forEach(btn => {
+                btn.dataset.cartKey = 'cart_delivery';
+                btn.textContent = '🛒 В корзину';
+            });
+            
+            // Скрываем кнопку возврата
+            document.getElementById('returnToBookingBtn').style.display = 'none';
+            
+            // Очищаем sessionStorage
+            sessionStorage.removeItem('booking_temp');
+        });
+
+        // ============================================
+        //  СЛАЙДЕР
+        // ============================================
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('sliderTrack');
+            const slides = track.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.getElementById('sliderPrev');
+            const nextBtn = document.getElementById('sliderNext');
+            let currentIndex = 0;
+            let intervalId = null;
+            const slideInterval = 5000; // 5 секунд
+
+            function goToSlide(index) {
+                // Снимаем активный класс со всех слайдов
+                slides.forEach(s => s.classList.remove('active'));
+                dots.forEach(d => d.classList.remove('active'));
+
+                // Добавляем активный класс текущему слайду
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentIndex = index;
+            }
+
+            function nextSlide() {
+                const nextIndex = (currentIndex + 1) % slides.length;
+                goToSlide(nextIndex);
+            }
+
+            function prevSlide() {
+                const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+                goToSlide(prevIndex);
+            }
+
+            function startAutoplay() {
+                stopAutoplay();
+                intervalId = setInterval(nextSlide, slideInterval);
+            }
+
+            function stopAutoplay() {
+                if (intervalId) {
+                    clearInterval(intervalId);
+                    intervalId = null;
+                }
+            }
+
+            // Обработчики кнопок
+            prevBtn.addEventListener('click', function() {
+                prevSlide();
+                startAutoplay(); // перезапускаем автоплей
+            });
+
+            nextBtn.addEventListener('click', function() {
+                nextSlide();
+                startAutoplay(); // перезапускаем автоплей
+            });
+
+            // Обработчики точек
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    goToSlide(index);
+                    startAutoplay(); // перезапускаем автоплей
+                });
+            });
+
+            // Пауза при наведении на слайдер
+            const sliderContainer = document.querySelector('.slider-container');
+            sliderContainer.addEventListener('mouseenter', stopAutoplay);
+            sliderContainer.addEventListener('mouseleave', startAutoplay);
+
+            // Запускаем автоплей
+            startAutoplay();
+        });
+    </script>
+
+</body>
+</html>

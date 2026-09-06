@@ -10,60 +10,43 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+from pathlib import Path
 import os
 from dotenv import load_dotenv
-from pathlib import Path
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Явно указываем путь к .env
-env_path = os.path.join(BASE_DIR, 'chaikhana_project', '.env')
-load_dotenv(env_path)
+# Загружаем переменные из .env
+load_dotenv()
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-temp-key-for-dev')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# Временно для отладки — потом поставим False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '.onrender.com',  # Если используешь Render
-    '.timeweb.cloud',  # Если используешь Timeweb
-    '.ru',  # Если у тебя будет домен .ru
-    'ваш-домен.ru',  # Замени на реальный домен
+    '.timeweb.cloud',
+    '.twc1.net',
+    'mercy335-chaikhana-ab95.twc1.net',
 ]
 
-# ⭐ 3. Генерируем новый SECRET_KEY (не менее 50 символов)
-# Вставь этот ключ в .env и убери из settings.py
-# Для генерации: python -c "import secrets; print(secrets.token_urlsafe(50))"
-
-
-# ⭐ 4. Включаем HTTPS (SSL)
-SECURE_SSL_REDIRECT = True  # Все запросы перенаправлять на HTTPS
-CSRF_COOKIE_SECURE = True   # CSRF-токен только по HTTPS
-SESSION_COOKIE_SECURE = True  # Сессии только по HTTPS
-
-# ⭐ 5. HSTS (HTTP Strict Transport Security)
-SECURE_HSTS_SECONDS = 31536000  # 1 год
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-
-# ⭐ 6. Безопасные заголовки
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = 'DENY'
-
-# ⭐ 7. Настройки сессий
-SESSION_COOKIE_AGE = 86400  # 24 часа
-SESSION_SAVE_EVERY_REQUEST = True
-
 # ============================================
-#  СТАТИКА ДЛЯ ПРОДАКШЕНА
+#  БЕЗОПАСНОСТЬ (для работы за прокси Timeweb)
 # ============================================
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+# Для работы за HTTPS-прокси (Timeweb)
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Пока отключаем принудительный HTTPS, чтобы проверить работу
+SECURE_SSL_REDIRECT = False
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
+SECURE_HSTS_SECONDS = 0
 
 # Application definition
 
@@ -141,9 +124,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -153,7 +136,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'bookings', 'static'),
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Отключаем CSRF для API (для упрощения разработки)
 REST_FRAMEWORK = {
@@ -162,13 +150,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ],
 }
-
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'bookings', 'static'),
-]
-
-load_dotenv()
 
 # ===== TELEGRAM =====
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')

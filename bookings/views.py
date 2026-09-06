@@ -29,52 +29,63 @@ def available_tables(request):
     GET /api/tables?date=2026-06-25&time=19:00
     Возвращает список свободных столов на указанные дату и время
     """
-    # Получаем параметры из запроса
-    date = request.GET.get('date')
-    time = request.GET.get('time')
-    
-    # Проверяем, что дата и время переданы
-    if not date or not time:
-        return Response(
-            {"error": "Необходимо указать date и time (например: ?date=2026-06-25&time=19:00)"},
-            status=status.HTTP_400_BAD_REQUEST
-        )
-    
     try:
-        # Парсим время (ожидаем формат "19:00" или "19:00:00")
-        if len(time) == 5:  # "19:00"
-            time = f"{time}:00"
-        booking_time = datetime.strptime(time, "%H:%M:%S").time()
-    except ValueError:
+        # Получаем параметры из запроса
+        date = request.GET.get('date')
+        time = request.GET.get('time')
+        
+        # Проверяем, что дата и время переданы
+        if not date or not time:
+            return Response(
+                {"error": "Необходимо указать date и time (например: ?date=2026-06-25&time=19:00)"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        try:
+            # Парсим время (ожидаем формат "19:00" или "19:00:00")
+            if len(time) == 5:  # "19:00"
+                time = f"{time}:00"
+            booking_time = datetime.strptime(time, "%H:%M:%S").time()
+        except ValueError:
+            return Response(
+                {"error": "Неверный формат времени. Используйте HH:MM"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        try:
+            booking_date = datetime.strptime(date, "%Y-%m-%d").date()
+        except ValueError:
+            return Response(
+                {"error": "Неверный формат даты. Используйте YYYY-MM-DD"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        # Находим все активные столы
+        all_tables = Table.objects.filter(is_active=True)
+        
+        # Находим брони, которые пересекаются с запрошенным временем
+        busy_table_ids = Booking.objects.filter(
+            date=booking_date,
+            time=booking_time,
+            status__in=['new', 'confirmed']
+        ).values_list('table_id', flat=True)
+        
+        # Фильтруем столы: исключаем занятые
+        available_tables = all_tables.exclude(id__in=busy_table_ids)
+        
+        # Сериализуем и возвращаем результат
+        serializer = TableSerializer(available_tables, many=True)
+        return Response(serializer.data)
+        
+    except Exception as e:
+        # Логируем ошибку
+        print(f"❌ Ошибка в available_tables: {e}")
+        import traceback
+        traceback.print_exc()
         return Response(
-            {"error": "Неверный формат времени. Используйте HH:MM"},
-            status=status.HTTP_400_BAD_REQUEST
+            {"error": str(e)},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
-    
-    try:
-        booking_date = datetime.strptime(date, "%Y-%m-%d").date()
-    except ValueError:
-        return Response(
-            {"error": "Неверный формат даты. Используйте YYYY-MM-DD"},
-            status=status.HTTP_400_BAD_REQUEST
-        )
-    
-    # Находим все активные столы
-    all_tables = Table.objects.filter(is_active=True)
-    
-    # Находим брони, которые пересекаются с запрошенным временем
-    busy_table_ids = Booking.objects.filter(
-        date=booking_date,
-        time=booking_time,
-        status__in=['new', 'confirmed']
-    ).values_list('table_id', flat=True)
-    
-    # Фильтруем столы: исключаем занятые
-    available_tables = all_tables.exclude(id__in=busy_table_ids)
-    
-    # Сериализуем и возвращаем результат
-    serializer = TableSerializer(available_tables, many=True)
-    return Response(serializer.data)
 
 
 @csrf_exempt

@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-temp-key-for-dev')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Временно для отладки — потом поставим False
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -96,8 +96,12 @@ WSGI_APPLICATION = 'chaikhana_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django_db',           # Название вашей базы данных
+        'USER': 'gen_user',     # Имя пользователя из панели
+        'PASSWORD': 'admin123',       # Пароль из панели
+        'HOST': 'публичный_IP_адрес',   # IP-адрес вашей базы
+        'PORT': '5432',                 # Стандартный порт PostgreSQL
     }
 }
 

@@ -100,7 +100,7 @@ DATABASES = {
         'NAME': 'default_db',
         'USER': 'gen_user',
         'PASSWORD': 'admin123',
-        'HOST': '192.168.0.4',  # ИЛИ домен c-xxxxx.timeweb.cloud
+        'HOST': '186.246.1.167',  # ИЛИ домен c-xxxxx.timeweb.cloud
         'PORT': '5432',
     }
 }

@@ -9,9 +9,9 @@ db.sqlite3
 *.sqlite3
 
 # Статика (собранная)
-staticfiles/
-static/
-media/
+# staticfiles/
+# static/
+# media/
 
 # Файлы Python
 *.pyc

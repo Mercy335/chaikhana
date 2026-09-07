@@ -97,11 +97,11 @@ WSGI_APPLICATION = 'chaikhana_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django_db',           # Название вашей базы данных
-        'USER': 'gen_user',     # Имя пользователя из панели
-        'PASSWORD': 'admin123',       # Пароль из панели
-        'HOST': 'postgresql://gen_user:admin123@192.168.0.4:5432/default_db',
-        'PORT': '5432',                 # Стандартный порт PostgreSQL
+        'NAME': 'default_db',
+        'USER': 'gen_user',
+        'PASSWORD': 'admin123',
+        'HOST': '192.168.0.4',  # ИЛИ домен c-xxxxx.timeweb.cloud
+        'PORT': '5432',
     }
 }
 

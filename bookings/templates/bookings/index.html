@@ -1116,7 +1116,7 @@
                 </div>
                 <!-- Слайд 2 -->
                 <div class="slide active">
-                    <div class="slide-bg" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('{% static "bookings/images/slide1.jpg" %}');">
+                    <div class="slide-bg" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('{% static "bookings/images/fon.jpg" %}');">
                         <div class="slide-content">
                             <h1>🎵 Живая музыка</h1>
                             <p>Каждую пятницу и субботу в зале европейской и русской кухни</p>
@@ -1158,119 +1158,601 @@
     </section>
 
     <!-- ========== НАВИГАЦИЯ ПО БЛЮДАМ ========== -->
+    <!-- ========== НАВИГАЦИЯ ПО БЛЮДАМ ========== -->
     <nav class="menu-nav">
         <div class="container">
-            <a href="#soups"> Супы</a>
-            <a href="#salads"> Салаты</a>
-            <a href="#grill"> Мангал</a>
-            <a href="#drinks"> Напитки</a>
+            <a href="#soups">Супы</a>
+            <a href="#hot">Горячие блюда</a>
+            <a href="#pizza">Пицца</a>
+            <a href="#grill">Мангал</a>
+            <a href="#salads">Салаты</a>
+            <a href="#hotappetizers">Горячие закуски</a>
+            <a href="#appetizers">Холодные закуски</a>
+            <a href="#garnir">Гарнир</a>
+            <a href="#bulki">Мучное</a>
+            <a href="#sauces">Соусы</a>
+            <a href="#drinks">Напитки</a>
         </div>
     </nav>
 
-    <!-- ========== БЛОКИ С БЛЮДАМИ ========== -->
-    <div class="container">
+    <!-- ========== меню ========== -->
+    <div class="container" style=" padding: 20px 20px 0;">
 
         <!-- СУПЫ -->
         <section class="menu-section" id="soups">
-            <h2> Супы</h2>
+            <h2>Супы</h2>
             <div class="menu-grid">
-                <!-- Блюдо 1 -->
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="{% static 'bookings/images/shurpa.png' %}" alt="Шурпа" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        <img src="{% static 'bookings/images/shurpa.png' %}" alt="Мастава" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
                     </div>
                     <div class="menu-item-body">
-                        <div class="menu-item-name">Шурпа</div>
-                        <div class="menu-item-desc">Наваристый суп с бараниной и овощами</div>
-                        <div class="menu-item-price">450 ₽ <span>/ порция</span></div>
+                        <div class="menu-item-name">Мастава</div>
+                        <div class="menu-item-desc">Говядина, лук, чеснок, перец(болг.), картофель, морковь, фасоль, зелень, кукуруза, томаты, рис 400гр.</div>
+                        <div class="menu-item-price">350 ₽ <span>/ порция</span></div>
                         <button class="btn-add-to-cart" data-id="1">🛒 В корзину</button>
                     </div>
                 </div>
-                <!-- Блюдо 2 -->
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="{% static 'bookings/images/lagman.jpg' %}" alt="Лагман" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        <img src="{% static 'bookings/images/lagman.jpg' %}" alt="Борщ" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
                     </div>
                     <div class="menu-item-body">
-                        <div class="menu-item-name">Лагман</div>
-                        <div class="menu-item-desc">Традиционный суп с домашней лапшой и мясом</div>
-                        <div class="menu-item-price">420 ₽ <span>/ порция</span></div>
+                        <div class="menu-item-name">Борщ</div>
+                        <div class="menu-item-desc">400гр.</div>
+                        <div class="menu-item-price">350 ₽ <span>/ порция</span></div>
                         <button class="btn-add-to-cart" data-id="2">🛒 В корзину</button>
                     </div>
                 </div>
-                <!-- Блюдо 3 -->
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="{% static 'bookings/images/lagman uigurskiy.jpg' %}" alt="Лагман уйгурский" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        <img src="{% static 'bookings/images/lagman uigurskiy.jpg' %}" alt="Тыквенный крем-суп" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
                     </div>
                     <div class="menu-item-body">
-                        <div class="menu-item-name">Лагман уйгурский</div>
-                        <div class="menu-item-desc">Суп с маленькими пельменями в бульоне</div>
-                        <div class="menu-item-price">390 ₽ <span>/ порция</span></div>
+                        <div class="menu-item-name">Тыквенный крем-суп</div>
+                        <div class="menu-item-desc">400гр.</div>
+                        <div class="menu-item-price">400 ₽ <span>/ порция</span></div>
                         <button class="btn-add-to-cart" data-id="3">🛒 В корзину</button>
                     </div>
                 </div>
-                <!-- Блюдо 4 -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Рассольник" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Рассольник</div>
+                        <div class="menu-item-desc">400гр.</div>
+                        <div class="menu-item-price">350 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Грибной крем-суп" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Грибной крем-суп</div>
+                        <div class="menu-item-desc">400гр.</div>
+                        <div class="menu-item-price">420 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Пельмени" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Пельмени</div>
+                        <div class="menu-item-desc">400гр.</div>
+                        <div class="menu-item-price">350 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Шурпа с бараниной" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Шурпа с бараниной</div>
+                        <div class="menu-item-desc">400гр.</div>
+                        <div class="menu-item-price">370 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Лагман Уйгурский" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Лагман Уйгурский</div>
+                        <div class="menu-item-desc">400гр.</div>
+                        <div class="menu-item-price">390 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Лагман Узбекский" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Лагман Узбекский</div>
+                        <div class="menu-item-desc">400гр.</div>
+                        <div class="menu-item-price">370 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Шурпа с говядиной" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Шурпа с говядиной</div>
+                        <div class="menu-item-desc">400гр.</div>
+                        <div class="menu-item-price">350 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Куриный суп" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Куриный суп</div>
+                        <div class="menu-item-desc">350гр.</div>
+                        <div class="menu-item-price">330 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
                 <div class="menu-item">
                     <div class="menu-item-image">
                         <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Солянка" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
                     </div>
                     <div class="menu-item-body">
-                        <div class="menu-item-name">Солянка мясная</div>
-                        <div class="menu-item-desc">Нежный суп </div>
-                        <div class="menu-item-price">350 ₽ <span>/ порция</span></div>
+                        <div class="menu-item-name">Солянка</div>
+                        <div class="menu-item-desc">400гр.</div>
+                        <div class="menu-item-price">480 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Щи зеленые" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Щи зеленые</div>
+                        <div class="menu-item-desc">400гр.</div>
+                        <div class="menu-item-price">330 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Харчо с бараниной" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Харчо с бараниной</div>
+                        <div class="menu-item-desc">350гр.</div>
+                        <div class="menu-item-price">380 ₽ <span>/ порция</span></div>
                         <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- САЛАТЫ -->
-        <section class="menu-section" id="salads">
-            <h2> Салаты</h2>
+        <!-- ГОРЯЧИЕ БЛЮДА -->
+        <section class="menu-section" id="hot">
+            <h2>Горячие блюда</h2>
             <div class="menu-grid">
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="{% static 'bookings/images/olivie.jpg' %}" alt="Оливье" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        <img src="{% static 'bookings/images/shurpa.png' %}" alt="Казан-кебаб говядина" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
                     </div>
                     <div class="menu-item-body">
-                        <div class="menu-item-name">Оливье</div>
-                        <div class="menu-item-desc">Классический салат с курицей и маринованными огурцами</div>
-                        <div class="menu-item-price">320 ₽ <span>/ порция</span></div>
-                        <button class="btn-add-to-cart" data-id="5">🛒 В корзину</button>
+                        <div class="menu-item-name">Казан-кебаб говядина</div>
+                        <div class="menu-item-desc">450гр.</div>
+                        <div class="menu-item-price">650 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="1">🛒 В корзину</button>
                     </div>
                 </div>
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="{% static 'bookings/images/cezar.jpg' %}" alt="Цезарь" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        <img src="{% static 'bookings/images/lagman.jpg' %}" alt="Казан-кебаб баранина" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
                     </div>
                     <div class="menu-item-body">
-                        <div class="menu-item-name">Цезарь с курицей</div>
-                        <div class="menu-item-desc">С курицей, пармезаном и соусом Цезарь</div>
-                        <div class="menu-item-price">380 ₽ <span>/ порция</span></div>
-                        <button class="btn-add-to-cart" data-id="6">🛒 В корзину</button>
+                        <div class="menu-item-name">Казан-кебаб баранина</div>
+                        <div class="menu-item-desc">450гр.</div>
+                        <div class="menu-item-price">750 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="2">🛒 В корзину</button>
                     </div>
                 </div>
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="{% static 'bookings/images/vostok salat.jpg' %}" alt="Восток" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        <img src="{% static 'bookings/images/lagman uigurskiy.jpg' %}" alt="Джиз Быз" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
                     </div>
                     <div class="menu-item-body">
-                        <div class="menu-item-name">Восточный салат</div>
-                        <div class="menu-item-desc">Свежие овощи с зеленью и лимонным соком</div>
-                        <div class="menu-item-price">280 ₽ <span>/ порция</span></div>
-                        <button class="btn-add-to-cart" data-id="7">🛒 В корзину</button>
+                        <div class="menu-item-name">Джиз Быз</div>
+                        <div class="menu-item-desc">250/100гр.</div>
+                        <div class="menu-item-price">770 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="3">🛒 В корзину</button>
                     </div>
                 </div>
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="{% static 'bookings/images/grecheskiy.jpg' %}" alt="Греческий" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Долма" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
                     </div>
                     <div class="menu-item-body">
-                        <div class="menu-item-name">Греческий салат</div>
-                        <div class="menu-item-desc">С фетой, оливками и свежими овощами</div>
-                        <div class="menu-item-price">340 ₽ <span>/ порция</span></div>
-                        <button class="btn-add-to-cart" data-id="8">🛒 В корзину</button>
+                        <div class="menu-item-name">Долма</div>
+                        <div class="menu-item-desc">300/50гр.</div>
+                        <div class="menu-item-price">520 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Бешбармак" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Бешбармак</div>
+                        <div class="menu-item-desc">250/200гр.</div>
+                        <div class="menu-item-price">680 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Лагман жареный" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Лагман жареный</div>
+                        <div class="menu-item-desc">400гр.</div>
+                        <div class="menu-item-price">540 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Манты" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Манты</div>
+                        <div class="menu-item-desc">1 шт.</div>
+                        <div class="menu-item-price">80 ₽ <span>/ шт.</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Плов" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Плов</div>
+                        <div class="menu-item-desc">400гр.</div>
+                        <div class="menu-item-price">390 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Жаровня говядина" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Жаровня говядина</div>
+                        <div class="menu-item-desc">300гр.</div>
+                        <div class="menu-item-price">580 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Жаровня баранина" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Жаровня баранина</div>
+                        <div class="menu-item-desc">300гр.</div>
+                        <div class="menu-item-price">650 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Мясо по-домашнему" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Мясо по-домашнему</div>
+                        <div class="menu-item-desc">350гр.</div>
+                        <div class="menu-item-price">580 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Бефстроганов" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Бефстроганов</div>
+                        <div class="menu-item-desc">350гр.</div>
+                        <div class="menu-item-price">580 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Жареный Карп" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Жареный Карп</div>
+                        <div class="menu-item-desc">350/50гр.</div>
+                        <div class="menu-item-price">650 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Куриное филе в сливочно-грибном соусе" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Куриное филе в сливочно-грибном соусе</div>
+                        <div class="menu-item-desc">350гр.</div>
+                        <div class="menu-item-price">550 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Жарковье из говядины" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Жарковье из говядины</div>
+                        <div class="menu-item-desc">350гр.</div>
+                        <div class="menu-item-price">600 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="4">🛒 В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- КАВКАЗСКАЯ КУХНЯ -->
+            <div class="menu-subsection">
+                <h3 class="menu-subtitle">Кавказская кухня</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/focaccia_classic.jpg' %}" alt="Хинкал с говядиной" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Хинкал с говядиной</div>
+                            <div class="menu-item-desc">350гр.</div>
+                            <div class="menu-item-price">700 ₽ <span>/ шт.</span></div>
+                            <button class="btn-add-to-cart" data-id="16">🛒 В корзину</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/focaccia_cheese.jpg' %}" alt="Масо с Голушками" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Масо с Голушками</div>
+                            <div class="menu-item-desc">350гр.</div>
+                            <div class="menu-item-price">650 ₽ <span>/ шт.</span></div>
+                            <button class="btn-add-to-cart" data-id="17">🛒 В корзину</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/focaccia_tomato.jpg' %}" alt="Чепалгаш" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Чепалгаш</div>
+                            <div class="menu-item-desc">250гр.</div>
+                            <div class="menu-item-price">500 ₽ <span>/ шт.</span></div>
+                            <button class="btn-add-to-cart" data-id="18">🛒 В корзину</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/focaccia_tomato.jpg' %}" alt="Курзе" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Курзе</div>
+                            <div class="menu-item-desc">3 шт.</div>
+                            <div class="menu-item-price">400 ₽ <span>/ шт.</span></div>
+                            <button class="btn-add-to-cart" data-id="18">🛒 В корзину</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/focaccia_tomato.jpg' %}" alt="Чуду" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Чуду</div>
+                            <div class="menu-item-desc">200гр.</div>
+                            <div class="menu-item-price">450 ₽ <span>/ шт.</span></div>
+                            <button class="btn-add-to-cart" data-id="18">🛒 В корзину</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- СПАГЕТТИ -->
+            <div class="menu-subsection">
+                <h3 class="menu-subtitle">Спагетти</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/focaccia_classic.jpg' %}" alt="Лосось в сливочном соусе" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Лосось в сливочном соусе</div>
+                            <div class="menu-item-desc">350гр.</div>
+                            <div class="menu-item-price">700 ₽ <span>/ порция</span></div>
+                            <button class="btn-add-to-cart" data-id="16">🛒 В корзину</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/focaccia_cheese.jpg' %}" alt="Курица и грибы в сливочном соусе" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Курица и грибы в сливочном соусе</div>
+                            <div class="menu-item-desc">350гр.</div>
+                            <div class="menu-item-price">650 ₽ <span>/ порция</span></div>
+                            <button class="btn-add-to-cart" data-id="17">🛒 В корзину</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/focaccia_tomato.jpg' %}" alt="Маринаро с креветками" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Маринаро с креветками</div>
+                            <div class="menu-item-desc">350гр.</div>
+                            <div class="menu-item-price">700 ₽ <span>/ порция</span></div>
+                            <button class="btn-add-to-cart" data-id="18">🛒 В корзину</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ФЕТУЧИНИ -->
+            <div class="menu-subsection">
+                <h3 class="menu-subtitle">Фетучини</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/focaccia_classic.jpg' %}" alt="С креветками" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Фетучини с креветками</div>
+                            <div class="menu-item-desc">350гр.</div>
+                            <div class="menu-item-price">700 ₽ <span>/ порция</span></div>
+                            <button class="btn-add-to-cart" data-id="16">🛒 В корзину</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/focaccia_cheese.jpg' %}" alt="Песто с овощами" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Фетучини Песто с овощами</div>
+                            <div class="menu-item-desc">350гр.</div>
+                            <div class="menu-item-price">550 ₽ <span>/ порция</span></div>
+                            <button class="btn-add-to-cart" data-id="17">🛒 В корзину</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/focaccia_tomato.jpg' %}" alt="Страчателла" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Фетучини Страчателла</div>
+                            <div class="menu-item-desc">350гр.</div>
+                            <div class="menu-item-price">600 ₽ <span>/ порция</span></div>
+                            <button class="btn-add-to-cart" data-id="18">🛒 В корзину</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ПИЦЦА -->
+        <section class="menu-section" id="pizza">
+            <h2>Пицца</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/pizza_margarita.jpg' %}" alt="Маргарита" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Маргарита</div>
+                        <div class="menu-item-desc">Томатный соус, моцарелла, базилик, оливковое масло</div>
+                        <div class="menu-item-price">450 ₽ <span>/ 30 см</span></div>
+                        <button class="btn-add-to-cart" data-id="101">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/pizza_4cheese.jpg' %}" alt="4 сыра" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">4 сыра</div>
+                        <div class="menu-item-desc">Моцарелла, дорблю, пармезан, горгонзола, сливки</div>
+                        <div class="menu-item-price">550 ₽ <span>/ 30 см</span></div>
+                        <button class="btn-add-to-cart" data-id="102">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/pizza_pepperoni.jpg' %}" alt="Пепперони" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Пепперони</div>
+                        <div class="menu-item-desc">Томатный соус, моцарелла, пепперони, орегано</div>
+                        <div class="menu-item-price">520 ₽ <span>/ 30 см</span></div>
+                        <button class="btn-add-to-cart" data-id="103">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/pizza_zhulien.jpg' %}" alt="Жульен" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Жульен</div>
+                        <div class="menu-item-desc">Куриное филе, шампиньоны, сливочный соус, моцарелла</div>
+                        <div class="menu-item-price">580 ₽ <span>/ 30 см</span></div>
+                        <button class="btn-add-to-cart" data-id="104">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/pizza_cezar.jpg' %}" alt="Цезарь" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Цезарь</div>
+                        <div class="menu-item-desc">Куриное филе, салат айсберг, соус цезарь, пармезан</div>
+                        <div class="menu-item-price">530 ₽ <span>/ 30 см</span></div>
+                        <button class="btn-add-to-cart" data-id="105">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/pizza_cezar_closed.jpg' %}" alt="Цезарь закрытый" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Цезарь закрытый</div>
+                        <div class="menu-item-desc">Куриное филе, салат, соус цезарь, закрытое тесто</div>
+                        <div class="menu-item-price">590 ₽ <span>/ 30 см</span></div>
+                        <button class="btn-add-to-cart" data-id="106">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/pizza_vegan.jpg' %}" alt="Веган" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Веган</div>
+                        <div class="menu-item-desc">Томатный соус, овощи гриль, руккола, оливки, базилик</div>
+                        <div class="menu-item-price">490 ₽ <span>/ 30 см</span></div>
+                        <button class="btn-add-to-cart" data-id="107">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/pizza_pear_gorgonzola.jpg' %}" alt="Груша горгонзола" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Груша горгонзола</div>
+                        <div class="menu-item-desc">Груша, горгонзола, моцарелла, грецкий орех, мед</div>
+                        <div class="menu-item-price">570 ₽ <span>/ 30 см</span></div>
+                        <button class="btn-add-to-cart" data-id="108">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/pizza_shrimp.jpg' %}" alt="С креветками" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">С креветками</div>
+                        <div class="menu-item-desc">Томатный соус, моцарелла, креветки, чеснок, базилик</div>
+                        <div class="menu-item-price">620 ₽ <span>/ 30 см</span></div>
+                        <button class="btn-add-to-cart" data-id="109">🛒 В корзину</button>
                     </div>
                 </div>
             </div>
@@ -1278,79 +1760,1057 @@
 
         <!-- МАНГАЛ -->
         <section class="menu-section" id="grill">
-            <h2> Мангал</h2>
+            <h2>Мангал</h2>
             <div class="menu-grid">
+                <!-- Люля Говядина -->
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="{% static 'bookings/images/shshlik.jpg' %}" alt="Шашлык" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        <img src="{% static 'bookings/images/khachapuri.jpg' %}" alt="Люля Говядина" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
                     </div>
                     <div class="menu-item-body">
-                        <div class="menu-item-name">Шашлык из баранины</div>
-                        <div class="menu-item-desc">На углях с пряностями, подается с соусом</div>
-                        <div class="menu-item-price">650 ₽ <span>/ порция</span></div>
-                        <button class="btn-add-to-cart" data-id="9">🛒 В корзину</button>
+                        <div class="menu-item-name">Люля Говядина</div>
+                        <div class="menu-item-desc">Сочная люля из говядины, лук, пряности</div>
+                        <div class="menu-item-price">500 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="201">🛒 В корзину</button>
                     </div>
                 </div>
+                <!-- Люля Баранина -->
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="{% static 'bookings/images/lulyz.png' %}" alt="Люля-кебаб" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        <img src="{% static 'bookings/images/khachapuri_megreli.jpg' %}" alt="Люля Баранина" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
                     </div>
                     <div class="menu-item-body">
-                        <div class="menu-item-name">Люля-кебаб</div>
-                        <div class="menu-item-desc">Мясной фарш на шпажках, запеченный на углях</div>
+                        <div class="menu-item-name">Люля Баранина</div>
+                        <div class="menu-item-desc">Сочная люля из баранины, зелень, пряности</div>
                         <div class="menu-item-price">590 ₽ <span>/ порция</span></div>
-                        <button class="btn-add-to-cart" data-id="10">🛒 В корзину</button>
+                        <button class="btn-add-to-cart" data-id="202">🛒 В корзину</button>
                     </div>
                 </div>
+                <!-- Люля Куриный -->
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="{% static 'bookings/images/dorado.jpg' %}" alt="дорадо" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        <img src="{% static 'bookings/images/khachapuri_imeruli.jpg' %}" alt="Люля Куриный" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
                     </div>
                     <div class="menu-item-body">
-                        <div class="menu-item-name">Дорадо на мангале</div>
-                        <div class="menu-item-desc">Со специями и чесноком</div>
-                        <div class="menu-item-price">520 ₽ <span>/ порция</span></div>
-                        <button class="btn-add-to-cart" data-id="11">🛒 В корзину</button>
+                        <div class="menu-item-name">Люля Куриный</div>
+                        <div class="menu-item-desc">Нежная люля из куриного филе, специи</div>
+                        <div class="menu-item-price">500 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="203">🛒 В корзину</button>
                     </div>
                 </div>
+                <!-- Люля Говядина с сыром -->
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="{% static 'bookings/images/ovoshi.png' %}" alt="Овощи" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        <img src="{% static 'bookings/images/khachapuri_imeruli.jpg' %}" alt="Люля Говядина с сыром" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Люля Говядина с сыром</div>
+                        <div class="menu-item-desc">Люля из говядины с сырной начинкой</div>
+                        <div class="menu-item-price">550 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="204">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Куриные крылышки -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/shshlik.jpg' %}" alt="Куриные крылышки" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Куриные крылышки</div>
+                        <div class="menu-item-desc">Крылышки в специях, соус барбекю, лимон</div>
+                        <div class="menu-item-price">650 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="205">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Куриное филе -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/lulyz.png' %}" alt="Куриное филе" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Куриное филе</div>
+                        <div class="menu-item-desc">Филе куриное на мангале, пряные травы</div>
+                        <div class="menu-item-price">590 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="206">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Мякоть телятины -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/dorado.jpg' %}" alt="Мякоть телятины" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Мякоть телятины</div>
+                        <div class="menu-item-desc">Нежная телятина, розмарин, чеснок</div>
+                        <div class="menu-item-price">780 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="207">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Мякоть баранины -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/dorado.jpg' %}" alt="Мякоть баранины" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Мякоть баранины</div>
+                        <div class="menu-item-desc">Баранина, лук, пряности</div>
+                        <div class="menu-item-price">850 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="208">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Карейка -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/dorado.jpg' %}" alt="Карейка" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Карейка</div>
+                        <div class="menu-item-desc">Свиная карейка, мёд, горчица, пряности</div>
+                        <div class="menu-item-price">750 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="209">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Наполеон -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/dorado.jpg' %}" alt="Наполеон" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Наполеон</div>
+                        <div class="menu-item-desc">Стейк из свинины, пряности, соус</div>
+                        <div class="menu-item-price">680 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="210">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Спинка -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/dorado.jpg' %}" alt="Спинка" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Спинка</div>
+                        <div class="menu-item-desc">Спинка скумбрии, лимон, пряности</div>
+                        <div class="menu-item-price">550 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="211">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Овощи на мангале -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/ovoshi.png' %}" alt="Овощи на мангале" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
                     </div>
                     <div class="menu-item-body">
                         <div class="menu-item-name">Овощи на мангале</div>
-                        <div class="menu-item-desc">Болгарский перец, кабачки, баклажаны</div>
+                        <div class="menu-item-desc">Перец, кабачки, баклажаны, томаты, масло</div>
                         <div class="menu-item-price">380 ₽ <span>/ порция</span></div>
-                        <button class="btn-add-to-cart" data-id="12">🛒 В корзину</button>
+                        <button class="btn-add-to-cart" data-id="212">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Шампиньоны -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/ovoshi.png' %}" alt="Шампиньоны" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Шампиньоны</div>
+                        <div class="menu-item-desc">Шампиньоны, чеснок, масло, пряности</div>
+                        <div class="menu-item-price">350 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="213">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Картофель -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/ovoshi.png' %}" alt="Картофель" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Картофель на мангале</div>
+                        <div class="menu-item-desc">Картофель, масло, розмарин, соль</div>
+                        <div class="menu-item-price">300 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="214">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Дорадо -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/ovoshi.png' %}" alt="Дорадо" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Дорадо</div>
+                        <div class="menu-item-desc">Дорадо, лимон, пряности, оливковое масло</div>
+                        <div class="menu-item-price">620 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="215">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Сибас -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/ovoshi.png' %}" alt="Сибас" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Сибас</div>
+                        <div class="menu-item-desc">Сибас, лимон, пряности, масло</div>
+                        <div class="menu-item-price">650 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="216">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Семга стейк -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/ovoshi.png' %}" alt="Семга стейк" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Семга стейк</div>
+                        <div class="menu-item-desc">Стейк сёмги, лимон, травы, масло</div>
+                        <div class="menu-item-price">750 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="217">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Рибай стейк -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/ovoshi.png' %}" alt="Рибай стейк" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Рибай стейк</div>
+                        <div class="menu-item-desc">Стейк рибай, масло, розмарин, чеснок</div>
+                        <div class="menu-item-price">950 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="218">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Ассорти Рохат - L -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/ovoshi.png' %}" alt="Ассорти Рохат - L" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Ассорти Рохат - L</div>
+                        <div class="menu-item-desc">Мясное ассорти для компании (800гр)</div>
+                        <div class="menu-item-price">4000 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="219">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Ассорти Рохат - XL -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/ovoshi.png' %}" alt="Ассорти Рохат - XL" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Ассорти Рохат - XL</div>
+                        <div class="menu-item-desc">Мясное ассорти для компании (1000гр)</div>
+                        <div class="menu-item-price">5100 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="220">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Ассорти Рохат - XXL -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/ovoshi.png' %}" alt="Ассорти Рохат - XXL" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Ассорти Рохат - XXL</div>
+                        <div class="menu-item-desc">Мясное ассорти для компании (1200гр)</div>
+                        <div class="menu-item-price">6000 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="221">🛒 В корзину</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- НАПИТКИ -->
-        <section class="menu-section" id="drinks">
-            <h2> Напитки</h2>
+        <!-- САЛАТЫ -->
+        <section class="menu-section" id="salads">
+            <h2>Салаты</h2>
+            <div class="menu-grid">
+                <!-- Аччик-чучук -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/olivie.jpg' %}" alt="Аччик-чучук" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Аччик-чучук</div>
+                        <div class="menu-item-desc">Свежие помидоры, лук, зелень, растительное масло</div>
+                        <div class="menu-item-price">320 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="301">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Чабан салат -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/olivie.jpg' %}" alt="Чабан салат" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Чабан салат</div>
+                        <div class="menu-item-desc">Овощи, зелень, сыр фета, оливковое масло</div>
+                        <div class="menu-item-price">340 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="302">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Шалун -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/olivie.jpg' %}" alt="Шалун" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Шалун</div>
+                        <div class="menu-item-desc">Микс салата, овощи, орехи, заправка</div>
+                        <div class="menu-item-price">360 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="303">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Баклажан с мясом -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/olivie.jpg' %}" alt="Баклажан с мясом" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Баклажан с мясом</div>
+                        <div class="menu-item-desc">Запеченный баклажан, мясной фарш, сыр, соус</div>
+                        <div class="menu-item-price">450 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="304">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Цезарь с курицей -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/cezar.jpg' %}" alt="Цезарь с курицей" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Цезарь с курицей</div>
+                        <div class="menu-item-desc">Куриное филе, салат, пармезан, соус цезарь</div>
+                        <div class="menu-item-price">480 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="305">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Цезарь с креветками -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/vostok salat.jpg' %}" alt="Цезарь с креветками" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Цезарь с креветками</div>
+                        <div class="menu-item-desc">Креветки, салат, пармезан, соус цезарь</div>
+                        <div class="menu-item-price">520 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="306">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Цезарь лосось -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/grecheskiy.jpg' %}" alt="Цезарь лосось" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Цезарь с лососем</div>
+                        <div class="menu-item-desc">Лосось, салат, пармезан, соус цезарь</div>
+                        <div class="menu-item-price">530 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="307">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Красавица руккола -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/olivie.jpg' %}" alt="Красавица руккола" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Красавица руккола</div>
+                        <div class="menu-item-desc">Руккола, овощи, кедровые орехи, масло</div>
+                        <div class="menu-item-price">380 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="308">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Оливье -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/olivie.jpg' %}" alt="Оливье" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Оливье</div>
+                        <div class="menu-item-desc">Классический салат с курицей и маринованными огурцами</div>
+                        <div class="menu-item-price">350 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="309">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Салат с морепродуктами -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/olivie.jpg' %}" alt="Салат с морепродуктами" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Салат с морепродуктами</div>
+                        <div class="menu-item-desc">Микс морепродуктов, зелень, масло, лимон</div>
+                        <div class="menu-item-price">560 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="310">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Хрустящие баклажаны -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/olivie.jpg' %}" alt="Хрустящие баклажаны" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Хрустящие баклажаны</div>
+                        <div class="menu-item-desc">Баклажаны, панировка, соус, зелень</div>
+                        <div class="menu-item-price">420 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="311">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Наслаждение -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/olivie.jpg' %}" alt="Наслаждение" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Наслаждение</div>
+                        <div class="menu-item-desc">Овощи, фрукты, орехи, медово-лимонная заправка</div>
+                        <div class="menu-item-price">390 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="312">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Салат Зеленый -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/olivie.jpg' %}" alt="Салат Зеленый" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Салат Зеленый</div>
+                        <div class="menu-item-desc">Авокадо, шпинат, сельдерей, руккола, мята в медово-лимонной заправке с миксом орехов и семян</div>
+                        <div class="menu-item-price">440 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="313">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Страчателла -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/olivie.jpg' %}" alt="Страчателла" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Страчателла</div>
+                        <div class="menu-item-desc">Томаты, шпинат, авокадо, руккола, сыр страчателла</div>
+                        <div class="menu-item-price">480 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="314">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Салат из цепленка -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/olivie.jpg' %}" alt="Салат из цепленка" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Салат из цепленка</div>
+                        <div class="menu-item-desc">Куриное филе, свежие овощи, зелень, соус</div>
+                        <div class="menu-item-price">410 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="315">🛒 В корзину</button>
+                    </div>
+                </div>
+                <!-- Салат с лососем -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/olivie.jpg' %}" alt="Салат с лососем" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Салат с лососем</div>
+                        <div class="menu-item-desc">Лосось с/с, запеченный картофель, яйцо перепелки, сельдерей, соус песто, базилик и пармезан</div>
+                        <div class="menu-item-price">550 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="316">🛒 В корзину</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ГОРЯЧИЕ ЗАКУСКИ -->
+        <section class="menu-section" id="hotappetizers">
+            <h2>Горячие закуски</h2>
             <div class="menu-grid">
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="{% static 'bookings/images/chai.jpg' %}" alt="Чай" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        <img src="{% static 'bookings/images/shurpa.png' %}" alt="Язык сливочный со шпинатом" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
                     </div>
                     <div class="menu-item-body">
-                        <div class="menu-item-name">Зеленый чай</div>
-                        <div class="menu-item-desc">Классический, с жасмином или мятой</div>
-                        <div class="menu-item-price">150 ₽ <span>/ чайник</span></div>
-                        <button class="btn-add-to-cart" data-id="13">🛒 В корзину</button>
+                        <div class="menu-item-name">Язык сливочный со шпинатом</div>
+                        <div class="menu-item-desc">Говяжий язык, сливочный соус, шпинат</div>
+                        <div class="menu-item-price">750 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="401">🛒 В корзину</button>
                     </div>
                 </div>
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="{% static 'bookings/images/kofe.jpg' %}" alt="Кофе" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        <img src="{% static 'bookings/images/lagman.jpg' %}" alt="Язык в томатном соусе" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
                     </div>
                     <div class="menu-item-body">
-                        <div class="menu-item-name">Кофе</div>
-                        <div class="menu-item-desc">Эспрессо, капучино, латте</div>
+                        <div class="menu-item-name">Язык в томатном соусе с базиликом</div>
+                        <div class="menu-item-desc">Говяжий язык, томатный соус, базилик</div>
+                        <div class="menu-item-price">750 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="402">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/lagman uigurskiy.jpg' %}" alt="Жареные сулугуни" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Жареные сулугуни</div>
+                        <div class="menu-item-desc">Сыр сулугуни в панировке, соус</div>
+                        <div class="menu-item-price">440 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="403">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Креветки отварные" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Креветки отварные</div>
+                        <div class="menu-item-desc">Отварные креветки, соус</div>
+                        <div class="menu-item-price">790 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="404">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Креветки жареные" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Креветки жареные</div>
+                        <div class="menu-item-desc">Жареные креветки, чеснок, специи</div>
+                        <div class="menu-item-price">790 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="405">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Мидии в сливочном соусе" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Мидии в сливочном соусе</div>
+                        <div class="menu-item-desc">Мидии, сливочный соус, чеснок, зелень</div>
+                        <div class="menu-item-price">690 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="406">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Жульен грибной" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Жульен грибной</div>
+                        <div class="menu-item-desc">Шампиньоны, сливки, сыр</div>
+                        <div class="menu-item-price">340 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="407">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Жульен с курицей" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Жульен с курицей</div>
+                        <div class="menu-item-desc">Куриное филе, грибы, сливочный соус, сыр</div>
+                        <div class="menu-item-price">360 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="408">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Жульен в тесте" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Жульен в тесте</div>
+                        <div class="menu-item-desc">Грибы, курица, сливки, сыр в тарталетке</div>
+                        <div class="menu-item-price">420 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="409">🛒 В корзину</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ХОЛОДНЫЕ ЗАКУСКИ -->
+        <section class="menu-section" id="appetizers">
+            <h2>Холодные закуски</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/shurpa.png' %}" alt="Овощной ассорти" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Овощной ассорти</div>
+                        <div class="menu-item-desc">Свежие овощи, зелень</div>
+                        <div class="menu-item-price">750 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="501">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/lagman.jpg' %}" alt="Маринованный ассорти" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Маринованный ассорти</div>
+                        <div class="menu-item-desc">Маринованные овощи, оливки, зелень</div>
+                        <div class="menu-item-price">650 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="502">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/lagman uigurskiy.jpg' %}" alt="Селедка с икрой" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Селедка с икрой</div>
+                        <div class="menu-item-desc">Слабосоленая селедка, икра, лук</div>
+                        <div class="menu-item-price">600 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="503">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Капрезе" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Капрезе</div>
+                        <div class="menu-item-desc">Моцарелла, томаты, базилик, масло</div>
+                        <div class="menu-item-price">650 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="504">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Рулетики из баклажанов" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Рулетики из баклажанов</div>
+                        <div class="menu-item-desc">Баклажаны, творожный сыр, орехи, зелень</div>
+                        <div class="menu-item-price">480 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="505">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Сыр ассорти" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Сыр ассорти</div>
+                        <div class="menu-item-desc">Ассорти сыров, орехи, мед, виноград</div>
+                        <div class="menu-item-price">1500 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="506">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Мясной ассорти" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Мясной ассорти</div>
+                        <div class="menu-item-desc">Ассорти мясных деликатесов</div>
+                        <div class="menu-item-price">1600 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="507">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Рыбный ассорти" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Рыбный ассорти</div>
+                        <div class="menu-item-desc">Ассорти рыбы, лимон, соус</div>
+                        <div class="menu-item-price">1650 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="508">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Мухоморы" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Мухоморы</div>
+                        <div class="menu-item-desc">Маринованные грибы, зелень</div>
+                        <div class="menu-item-price">400 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="509">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Сузьма" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Сузьма</div>
+                        <div class="menu-item-desc">Копчёная рыба, масло, зелень</div>
+                        <div class="menu-item-price">150 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="510">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Фрукты ассорти" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Фрукты ассорти</div>
+                        <div class="menu-item-desc">Сезонные фрукты</div>
+                        <div class="menu-item-price">1100 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="511">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/solyanka.jpg' %}" alt="Фрукты + Ананас" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Фрукты + Ананас</div>
+                        <div class="menu-item-desc">Сезонные фрукты, ананас</div>
+                        <div class="menu-item-price">2000 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="512">🛒 В корзину</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ГАРНИР -->
+        <section class="menu-section" id="garnir">
+            <h2>Гарнир</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/chai.jpg' %}" alt="Картошка фри" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Картошка фри</div>
+                        <div class="menu-item-desc">Хрустящий картофель фри, соль</div>
+                        <div class="menu-item-price">250 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="601">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/kofe.jpg' %}" alt="Картошка по-деревенски" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Картошка по-деревенски</div>
+                        <div class="menu-item-desc">Картофель, розмарин, масло, соль</div>
+                        <div class="menu-item-price">280 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="602">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/limonad.png' %}" alt="Рис" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Рис</div>
+                        <div class="menu-item-desc">Отварной рис, масло, соль</div>
+                        <div class="menu-item-price">200 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="603">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/mors.jpg' %}" alt="Пюре" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Пюре</div>
+                        <div class="menu-item-desc">Картофельное пюре, сливки, масло</div>
+                        <div class="menu-item-price">220 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="604">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/ovoshi.png' %}" alt="Овощи гриль" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Овощи гриль</div>
+                        <div class="menu-item-desc">Кабачки, баклажаны, перец, масло, травы</div>
+                        <div class="menu-item-price">300 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="605">🛒 В корзину</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- МУЧНОЕ -->
+        <section class="menu-section" id="bulki">
+            <h2>Мучное</h2>
+
+            <!-- ХАЧАПУРИ -->
+            <div class="menu-subsection">
+                <h3 class="menu-subtitle">Хачапури</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/khachapuri.jpg' %}" alt="Хачапури по-аджарски" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Хачапури по-аджарски</div>
+                            <div class="menu-item-desc">Сыр сулугуни, яйцо, сливочное масло</div>
+                            <div class="menu-item-price">500 ₽ <span>/ шт.</span></div>
+                            <button class="btn-add-to-cart" data-id="701">🛒 В корзину</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/khachapuri_megreli.jpg' %}" alt="Хачапури по-мегрельски" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Хачапури по-мегрельски</div>
+                            <div class="menu-item-desc">Сыр сулугуни, масло, румяная корочка</div>
+                            <div class="menu-item-price">590 ₽ <span>/ шт.</span></div>
+                            <button class="btn-add-to-cart" data-id="702">🛒 В корзину</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/khachapuri_imeruli.jpg' %}" alt="Хачапури по-имеретински" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Хачапури по-имеретински</div>
+                            <div class="menu-item-desc">Тонкое тесто, сыр сулугуни</div>
+                            <div class="menu-item-price">500 ₽ <span>/ шт.</span></div>
+                            <button class="btn-add-to-cart" data-id="703">🛒 В корзину</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ФОКАЧЧА -->
+            <div class="menu-subsection">
+                <h3 class="menu-subtitle">Фокачча</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/focaccia_classic.jpg' %}" alt="Фокачча пармезан и песто" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Фокачча пармезан и песто</div>
+                            <div class="menu-item-desc">Пармезан, соус песто, оливковое масло</div>
+                            <div class="menu-item-price">450 ₽ <span>/ шт.</span></div>
+                            <button class="btn-add-to-cart" data-id="704">🛒 В корзину</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/focaccia_cheese.jpg' %}" alt="Фокачча классика" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Фокачча классика</div>
+                            <div class="menu-item-desc">Оливковое масло, орегано, морская соль</div>
+                            <div class="menu-item-price">350 ₽ <span>/ шт.</span></div>
+                            <button class="btn-add-to-cart" data-id="705">🛒 В корзину</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/focaccia_tomato.jpg' %}" alt="Фокачча страчателла с томатами" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Фокачча страчателла с томатами</div>
+                            <div class="menu-item-desc">Томаты черри, сыр страчателла, оливковое масло</div>
+                            <div class="menu-item-price">480 ₽ <span>/ шт.</span></div>
+                            <button class="btn-add-to-cart" data-id="706">🛒 В корзину</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- БРУСКЕТТЫ -->
+            <div class="menu-subsection">
+                <h3 class="menu-subtitle">Брускетты</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/bruschetta_salmon.jpg' %}" alt="Брускетта лосось с авокадо" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Брускетта лосось с авокадо</div>
+                            <div class="menu-item-desc">Слабосолёный лосось, творожный сыр, авокадо</div>
+                            <div class="menu-item-price">420 ₽ <span>/ шт.</span></div>
+                            <button class="btn-add-to-cart" data-id="707">🛒 В корзину</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/bruschetta_tomato.jpg' %}" alt="Брускетта лосось и яйцо пашот" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Брускетта лосось и яйцо пашот</div>
+                            <div class="menu-item-desc">Лосось, яйцо пашот, творожный сыр, зелень</div>
+                            <div class="menu-item-price">450 ₽ <span>/ шт.</span></div>
+                            <button class="btn-add-to-cart" data-id="708">🛒 В корзину</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-image">
+                            <img src="{% static 'bookings/images/bruschetta_roastbeef.jpg' %}" alt="Брускетта креветка и авокадо" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                        </div>
+                        <div class="menu-item-body">
+                            <div class="menu-item-name">Брускетта креветка и авокадо</div>
+                            <div class="menu-item-desc">Креветки, авокадо, творожный сыр, зелень</div>
+                            <div class="menu-item-price">460 ₽ <span>/ шт.</span></div>
+                            <button class="btn-add-to-cart" data-id="709">🛒 В корзину</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- СОУСЫ -->
+        <section class="menu-section" id="sauces">
+            <h2>Соусы</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/sauce.jpg' %}" alt="Шашлычный" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Шашлычный</div>
+                        <div class="menu-item-desc">Томатный соус, специи, чеснок</div>
+                        <div class="menu-item-price">100 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="801">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/sauce.jpg' %}" alt="Аджика" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Аджика</div>
+                        <div class="menu-item-desc">Острая аджика, чеснок, специи</div>
+                        <div class="menu-item-price">100 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="802">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/sauce.jpg' %}" alt="Чесночный" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Чесночный</div>
+                        <div class="menu-item-desc">Сметана, чеснок, зелень</div>
+                        <div class="menu-item-price">100 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="803">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/sauce.jpg' %}" alt="ТарТар" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">ТарТар</div>
+                        <div class="menu-item-desc">Майонез, корнишоны, каперсы, зелень</div>
+                        <div class="menu-item-price">100 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="804">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/sauce.jpg' %}" alt="Сырный" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Сырный</div>
+                        <div class="menu-item-desc">Сливочный сыр, сливки, специи</div>
+                        <div class="menu-item-price">120 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="805">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/sauce.jpg' %}" alt="Кетчуп" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Кетчуп</div>
+                        <div class="menu-item-desc">Томатный кетчуп</div>
+                        <div class="menu-item-price">70 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="806">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/sauce.jpg' %}" alt="Наршараб" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Наршараб</div>
+                        <div class="menu-item-desc">Гранатовый соус, пряности</div>
+                        <div class="menu-item-price">120 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="807">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/sauce.jpg' %}" alt="Медовый" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Медовый</div>
+                        <div class="menu-item-desc">Мёд, горчица, пряности</div>
+                        <div class="menu-item-price">120 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="808">🛒 В корзину</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- НАПИТКИ -->
+        <section class="menu-section" id="drinks">
+            <h2>Напитки</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/chai.jpg' %}" alt="Зеленый чай" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Зеленый чай</div>
+                        <div class="menu-item-desc">Классический зеленый чай, жасмин или мята</div>
+                        <div class="menu-item-price">150 ₽ <span>/ чайник</span></div>
+                        <button class="btn-add-to-cart" data-id="901">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/chai.jpg' %}" alt="Черный чай" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Черный чай</div>
+                        <div class="menu-item-desc">Классический черный чай, лимон</div>
+                        <div class="menu-item-price">150 ₽ <span>/ чайник</span></div>
+                        <button class="btn-add-to-cart" data-id="902">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/kofe.jpg' %}" alt="Эспрессо" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Эспрессо</div>
+                        <div class="menu-item-desc">Классический эспрессо</div>
+                        <div class="menu-item-price">150 ₽ <span>/ чашка</span></div>
+                        <button class="btn-add-to-cart" data-id="903">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/kofe.jpg' %}" alt="Капучино" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Капучино</div>
+                        <div class="menu-item-desc">Эспрессо, молочная пенка</div>
                         <div class="menu-item-price">180 ₽ <span>/ чашка</span></div>
-                        <button class="btn-add-to-cart" data-id="14">🛒 В корзину</button>
+                        <button class="btn-add-to-cart" data-id="904">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/kofe.jpg' %}" alt="Латте" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Латте</div>
+                        <div class="menu-item-desc">Эспрессо, молоко, пенка</div>
+                        <div class="menu-item-price">200 ₽ <span>/ чашка</span></div>
+                        <button class="btn-add-to-cart" data-id="905">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/limonad.png' %}" alt="Лимонад" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Лимонад домашний</div>
+                        <div class="menu-item-desc">Свежевыжатый лимон, мята, сахар</div>
+                        <div class="menu-item-price">250 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="906">🛒 В корзину</button>
                     </div>
                 </div>
                 <div class="menu-item">
@@ -1359,9 +2819,9 @@
                     </div>
                     <div class="menu-item-body">
                         <div class="menu-item-name">Компот из сухофруктов</div>
-                        <div class="menu-item-desc">Домашний компот, как у бабушки</div>
+                        <div class="menu-item-desc">Домашний компот</div>
                         <div class="menu-item-price">160 ₽ <span>/ порция</span></div>
-                        <button class="btn-add-to-cart" data-id="15">🛒 В корзину</button>
+                        <button class="btn-add-to-cart" data-id="907">🛒 В корзину</button>
                     </div>
                 </div>
                 <div class="menu-item">
@@ -1372,7 +2832,51 @@
                         <div class="menu-item-name">Морс</div>
                         <div class="menu-item-desc">Клюквенный или брусничный</div>
                         <div class="menu-item-price">170 ₽ <span>/ порция</span></div>
-                        <button class="btn-add-to-cart" data-id="16">🛒 В корзину</button>
+                        <button class="btn-add-to-cart" data-id="908">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/limonad.png' %}" alt="Сок" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Сок</div>
+                        <div class="menu-item-desc">Апельсиновый, яблочный, мультифрукт</div>
+                        <div class="menu-item-price">180 ₽ <span>/ стакан</span></div>
+                        <button class="btn-add-to-cart" data-id="909">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/limonad.png' %}" alt="Молочный коктейль" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Молочный коктейль</div>
+                        <div class="menu-item-desc">Молоко, мороженое, сироп</div>
+                        <div class="menu-item-price">250 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="910">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/limonad.png' %}" alt="Фреш" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Фреш</div>
+                        <div class="menu-item-desc">Апельсиновый, грейпфрутовый</div>
+                        <div class="menu-item-price">300 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="911">🛒 В корзину</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="{% static 'bookings/images/limonad.png' %}" alt="Квас" onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Фото скоро'">
+                    </div>
+                    <div class="menu-item-body">
+                        <div class="menu-item-name">Квас</div>
+                        <div class="menu-item-desc">Домашний квас, свежий</div>
+                        <div class="menu-item-price">180 ₽ <span>/ порция</span></div>
+                        <button class="btn-add-to-cart" data-id="912">🛒 В корзину</button>
                     </div>
                 </div>
             </div>

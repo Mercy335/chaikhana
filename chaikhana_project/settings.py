@@ -19,6 +19,7 @@ ALLOWED_HOSTS = [
     '.timeweb.cloud',
     '.twc1.net',
     'mercy335-chaikhana-ab95.twc1.net',
+    'chayhanarohat.ru',  # <-- ДОБАВЬ СЮДА СВОЙ НОВЫЙ ДОМЕН
 ]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

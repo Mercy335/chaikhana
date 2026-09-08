@@ -170,3 +170,12 @@ EMAIL_RECIPIENT = os.getenv('EMAIL_RECIPIENT')
 
 print(f"📧 Email настроен для: {EMAIL_HOST_USER}")
 print(f"📧 EMAIL_RECIPIENT = {EMAIL_RECIPIENT}")
+
+# Для отдачи статики через Django (временное решение)
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # <-- ДОБАВЬ ЭТУ СТРОКУ
+    # ... остальные middleware
+]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

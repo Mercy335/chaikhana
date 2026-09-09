@@ -197,29 +197,56 @@
         /* ===== НАВИГАЦИЯ ПО БЛЮДАМ ===== */
         .menu-nav {
             background: rgb(35, 51, 29);
-            padding: 15px 0;
+            padding: 12px 0;
             border-bottom: 1px solid #e8d5c4;
             position: sticky;
-            top: 81px;
+            top: 0; /* Прижимаем к верху */
             z-index: 999;
+            width: 100%;
+        }
+
+        /* Для десктопа — отступ от шапки */
+        @media (min-width: 769px) {
+            .menu-nav {
+                top: 81px; /* Высота шапки на ПК */
+            }
+        }
+
+        /* Для мобилок — шапка меньше */
+        @media (max-width: 768px) {
+            .menu-nav {
+                top: 0;
+                padding: 10px 0;
+            }
         }
 
         .menu-nav .container {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding: 0 15px;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+        }
+
+        .menu-nav .container::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
         }
 
         .menu-nav a {
             color: #5c3d2e;
             text-decoration: none;
             font-weight: 600;
-            font-size: 16px;
-            padding: 8px 20px;
+            font-size: 14px;
+            padding: 6px 14px;
             border-radius: 20px;
             transition: all 0.3s;
             background: #f5ede6;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .menu-nav a:hover {
@@ -291,6 +318,9 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
             transition: all 0.3s;
             border: 1px solid #e8d5c4;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Растягиваем на всю высоту грида */
         }
 
         .menu-item:hover {
@@ -316,10 +346,6 @@
             object-fit: cover;
         }
 
-        .menu-item-body {
-            padding: 15px 20px 20px;
-        }
-
         .menu-item-name {
             font-size: 18px;
             font-weight: 700;
@@ -343,6 +369,78 @@
             font-size: 16px;
             font-weight: 400;
             color: #a67c6b;
+        }
+
+        /* ===== ПОДКАТЕГОРИИ (САБ-МЕНЮ) ===== */
+        .menu-subsection {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e8d5c4;
+        }
+
+        .menu-subsection:first-child {
+            border-top: none;
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        .menu-subtitle {
+            font-size: 22px;
+            color: #8b4513;
+            text-align: center;
+            margin: 25px 0 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .menu-subtitle::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #d4a373;
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        .menu-subsection .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-subsection .menu-item {
+            border: 1px solid #e8d5c4;
+            transition: all 0.3s;
+        }
+
+        .menu-subsection .menu-item:hover {
+            border-color: #d4a373;
+            transform: translateY(-4px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Адаптив для подкатегорий */
+        @media (max-width: 600px) {
+            .menu-subsection .menu-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .menu-subtitle {
+                font-size: 18px;
+            }
+
+            .menu-subtitle::after {
+                width: 40px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .menu-subsection .menu-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         /* ===== КНОПКА В КОРЗИНУ ===== */
@@ -376,6 +474,17 @@
         
         .btn-add-to-cart.added:hover {
             background: #166b2a;
+        }
+
+        .menu-item-body {
+            padding: 15px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .menu-item-body .btn-add-to-cart {
+            margin-top: auto;
         }
 
         /* ===== ПОДВАЛ ===== */
@@ -732,10 +841,6 @@
                 font-size: 14px;
             }
 
-            .menu-nav .container {
-                gap: 10px;
-            }
-
             .menu-nav a {
                 font-size: 14px;
                 padding: 6px 14px;
@@ -1073,7 +1178,7 @@
 
             <!-- ЦЕНТР: Логотип + название -->
             <div class="header-center">
-                <img src="{% static 'bookings/images/logo.jpg' %}" alt="Чайхана" class="header-logo">
+                <img src="{% static 'bookings/images/Logo.jpg' %}" alt="Чайхана" class="header-logo">
                 <div class="header-title">
                     Чайхона Рохат
                     <span>| Уют и вкус</span>

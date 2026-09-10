@@ -8,6 +8,8 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{% static 'bookings/images/favicon.jpg' %}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     
     <style>
         /* ===== ОБЩИЕ СТИЛИ ===== */
@@ -55,14 +57,17 @@
         }
 
         /* ===== ЛЕВАЯ ЧАСТЬ ===== */
-        .header-left {
-            flex: 0 0 auto;
-        }
+        @media (max-width: 768px) {
+            .header-left {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
 
-        .header-phone {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            .header-phone {
+                align-items: center;
+                text-align: center;
+            }
         }
 
         .phone-label {
@@ -71,6 +76,7 @@
             font-weight: 400;
             letter-spacing: 0.5px;
             text-transform: uppercase;
+            white-space: nowrap;
         }
 
         .phone-number {
@@ -79,6 +85,7 @@
             font-weight: 700;
             text-decoration: none;
             transition: color 0.3s;
+            white-space: nowrap;
         }
 
         .phone-number:hover {
@@ -965,200 +972,94 @@
             }
 
 
-            /* ===== СЛАЙДЕР ===== */
+            /* ===== SWIPER СЛАЙДЕР ===== */
             .hero-slider {
-                position: relative;
                 width: 100%;
                 height: 550px;
-                overflow: hidden;
                 border-radius: 0 0 50px 50px;
+                overflow: hidden;
                 margin-bottom: 40px;
             }
 
-            .slider-container {
-                position: relative;
+            .swiper {
                 width: 100%;
                 height: 100%;
             }
 
-            .slider-track {
-                display: flex;
-                width: 100%;
-                height: 100%;
-                transition: transform 0.7s ease-in-out;
-            }
-
-            .slide {
-                min-width: 100%;
-                height: 100%;
-                flex-shrink: 0;
-                opacity: 0;
-                transition: opacity 0.7s ease-in-out;
-                position: relative;
-            }
-
-            .slide.active {
-                opacity: 1;
-            }
-
-            .slide-bg {
-                width: 100%;
-                height: 100%;
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
+            .swiper-slide {
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                background-size: cover;
+                background-position: center;
+            }
+
+            .swiper-slide .slide-content {
+                color: white;
                 text-align: center;
+                max-width: 700px;
                 padding: 40px;
             }
 
-
-            .slide-content {
-                color: white;
-                max-width: 700px;
-            }
-
-            .slide-content h1 {
+            .swiper-slide .slide-content h1 {
                 font-size: 52px;
                 margin-bottom: 15px;
-                text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+                text-shadow: 0 2px 20px rgba(0,0,0,0.5);
             }
 
-            .slide-content p {
+            .swiper-slide .slide-content p {
                 font-size: 22px;
                 opacity: 0.95;
-                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+                text-shadow: 0 2px 10px rgba(0,0,0,0.5);
             }
 
-            /* ===== КНОПКИ СЛАЙДЕРА ===== */
-            .slider-btn {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                background: rgba(0, 0, 0, 0.5);
-                color: white;
-                border: none;
+            .swiper-button-next,
+            .swiper-button-prev {
+                color: white !important;
+                background: rgba(0,0,0,0.3);
+                border-radius: 50%;
                 width: 50px;
                 height: 50px;
-                border-radius: 50%;
-                font-size: 30px;
-                cursor: pointer;
-                z-index: 10;
                 transition: all 0.3s;
-                display: flex;
-                align-items: center;
-                justify-content: center;
             }
 
-            .slider-btn:hover {
+            .swiper-button-next:hover,
+            .swiper-button-prev:hover {
                 background: rgba(211, 129, 70, 0.8);
-                transform: translateY(-50%) scale(1.1);
             }
 
-            .slider-btn.prev {
-                left: 20px;
+            .swiper-pagination-bullet {
+                background: white !important;
+                opacity: 0.5 !important;
             }
 
-            .slider-btn.next {
-                right: 20px;
+            .swiper-pagination-bullet-active {
+                background: #d38146 !important;
+                opacity: 1 !important;
             }
 
-            /* ===== ТОЧКИ (ИНДИКАТОРЫ) ===== */
-            .slider-dots {
-                position: absolute;
-                bottom: 30px;
-                left: 50%;
-                transform: translateX(-50%);
-                display: flex;
-                gap: 12px;
-                z-index: 10;
-            }
-
-            .slider-dots .dot {
-                width: 14px;
-                height: 14px;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.4);
-                cursor: pointer;
-                transition: all 0.3s;
-                border: 2px solid transparent;
-            }
-
-            .slider-dots .dot.active {
-                background: #d38146;
-                border-color: white;
-                transform: scale(1.2);
-            }
-
-            .slider-dots .dot:hover {
-                background: rgba(255, 255, 255, 0.8);
-            }
-
-            /* ===== АДАПТИВ СЛАЙДЕРА ===== */
+            /* Адаптив */
             @media (max-width: 768px) {
                 .hero-slider {
                     height: 400px;
-                    border-radius: 0 0 30px 30px;
                 }
-
-                .slide-content h1 {
+                .swiper-slide .slide-content h1 {
                     font-size: 32px;
                 }
-
-                .slide-content p {
+                .swiper-slide .slide-content p {
                     font-size: 18px;
-                }
-
-                .slider-btn {
-                    width: 40px;
-                    height: 40px;
-                    font-size: 24px;
-                }
-
-                .slider-btn.prev {
-                    left: 10px;
-                }
-
-                .slider-btn.next {
-                    right: 10px;
-                }
-
-                .slider-dots .dot {
-                    width: 10px;
-                    height: 10px;
                 }
             }
 
             @media (max-width: 480px) {
                 .hero-slider {
-                    height: 320px;
-                    border-radius: 0 0 20px 20px;
+                    height: 300px;
                 }
-
-                .slide-content h1 {
+                .swiper-slide .slide-content h1 {
                     font-size: 24px;
                 }
-
-                .slide-content p {
+                .swiper-slide .slide-content p {
                     font-size: 15px;
-                }
-
-                .slider-btn {
-                    width: 32px;
-                    height: 32px;
-                    font-size: 18px;
-                }
-
-                .slider-dots {
-                    bottom: 15px;
-                    gap: 8px;
-                }
-
-                .slider-dots .dot {
-                    width: 8px;
-                    height: 8px;
                 }
             }
     </style>
@@ -1196,7 +1097,7 @@
                     🛒
                     <span id="cartCount" class="cart-badge" style="display: none; position: absolute; top: -8px; right: -12px; background: #a50e0e; color: white; font-size: 12px; font-weight: 700; border-radius: 50%; padding: 2px 8px; min-width: 20px; text-align: center;">0</span>
                 </a>
-                <button class="btn-book" id="openModalBtn">📅 Забронировать стол</button>
+                <button class="btn-book" id="openModalBtn">Забронировать стол</button>
             </div>
         </div>
     </header>
@@ -1207,58 +1108,47 @@
     <!-- ========== СЛАЙДЕР ========== -->
     <!-- ========== СЛАЙДЕР ========== -->
      
+   <!-- ========== СЛАЙДЕР ========== -->
+    <!-- ========== СЛАЙДЕР SWIPER ========== -->
     <section class="hero-slider">
-        <div class="slider-container">
-            <div class="slider-track" id="sliderTrack">
-                <!-- Слайд 1: существующий фон -->
-                <div class="slide active">
-                    <div class="slide-bg" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('{% static "bookings/images/fon.jpg" %}');">
-                        <div class="slide-content">
-                            <h1>🍵 Добро пожаловать в Чайхану</h1>
-                            <p>Атмосфера востока, вкусная еда и уютный отдых для всей семьи</p>
-                        </div>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <!-- Слайд 1 -->
+                <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('{% static "bookings/images/fon.jpg" %}'); background-size: cover; background-position: center;">
+                    <div class="slide-content">
+                        <h1>🍵 Добро пожаловать в Чайхану</h1>
+                        <p>Атмосфера востока, вкусная еда и уютный отдых для всей семьи</p>
                     </div>
                 </div>
                 <!-- Слайд 2 -->
-                <div class="slide active">
-                    <div class="slide-bg" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('{% static "bookings/images/fon.jpg" %}');">
-                        <div class="slide-content">
-                            <h1>🎵 Живая музыка</h1>
-                            <p>Каждую пятницу и субботу в зале европейской и русской кухни</p>
-                        </div>
+                <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('{% static "bookings/images/slide1.jpg" %}'); background-size: cover; background-position: center;">
+                    <div class="slide-content">
+                        <h1>🎵 Живая музыка</h1>
+                        <p>Каждую пятницу и субботу в зале европейской и русской кухни</p>
                     </div>
                 </div>
                 <!-- Слайд 3 -->
-                <div class="slide">
-                    <div class="slide-bg" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('{% static "bookings/images/slider/jivmuz.jpg" %}');">
-                        <div class="slide-content">
-                            <h1>🍽️ Уютный интерьер</h1>
-                            <p>Проведите время в атмосфере востока</p>
-                        </div>
+                <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('{% static "bookings/images/slider/jivmuz.jpg" %}'); background-size: cover; background-position: center;">
+                    <div class="slide-content">
+                        <h1>🍽️ Уютный интерьер</h1>
+                        <p>Проведите время в атмосфере востока</p>
                     </div>
                 </div>
                 <!-- Слайд 4 -->
-                <div class="slide">
-                    <div class="slide-bg" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('{% static "bookings/images/slider/slide3.jpg" %}');">
-                        <div class="slide-content">
-                            <h1>🥘 Традиционные супы</h1>
-                            <p>Согревающие блюда для всей семьи</p>
-                        </div>
+                <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('{% static "bookings/images/slider/slide3.jpg" %}'); background-size: cover; background-position: center;">
+                    <div class="slide-content">
+                        <h1>🥘 Традиционные супы</h1>
+                        <p>Согревающие блюда для всей семьи</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Кнопки управления -->
-            <button class="slider-btn prev" id="sliderPrev">‹</button>
-            <button class="slider-btn next" id="sliderNext">›</button>
+            <!-- Кнопки навигации -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
 
-            <!-- Индикаторы (точки) -->
-            <div class="slider-dots" id="sliderDots">
-                <span class="dot active" data-index="0"></span>
-                <span class="dot" data-index="1"></span>
-                <span class="dot" data-index="2"></span>
-                <span class="dot" data-index="3"></span>
-            </div>
+            <!-- Пагинация (точки) -->
+            <div class="swiper-pagination"></div>
         </div>
     </section>
 
@@ -3679,7 +3569,7 @@
             loadCartItemsToModal('cart_booking');
             
             // Меняем текст кнопки
-            submitBtn.textContent = '✅ Забронировать стол с блюдами';
+            submitBtn.textContent = 'Забронировать стол с блюдами';
 
             document.getElementById('returnToBookingBtn').style.display = 'none';
             
@@ -3858,13 +3748,13 @@
                 } else {
                     showToast('❌ ' + (result.error || 'Ошибка при бронировании'), 'error');
                     submitBtn.disabled = false;
-                    submitBtn.textContent = '✅ Забронировать стол с блюдами';
+                    submitBtn.textContent = 'Забронировать стол с блюдами';
                 }
             } catch (error) {
                 console.error('❌ Ошибка:', error);
                 showToast('❌ Ошибка соединения с сервером', 'error');
                 submitBtn.disabled = false;
-                submitBtn.textContent = '✅ Забронировать стол с блюдами';
+                submitBtn.textContent = 'Забронировать стол с блюдами';
             }
         }
         document.addEventListener('DOMContentLoaded', function() {
@@ -3889,80 +3779,36 @@
         });
 
         // ============================================
-        //  СЛАЙДЕР
+        //  SWIPER СЛАЙДЕР
         // ============================================
 
         document.addEventListener('DOMContentLoaded', function() {
-            const track = document.getElementById('sliderTrack');
-            const slides = track.querySelectorAll('.slide');
-            const dots = document.querySelectorAll('.dot');
-            const prevBtn = document.getElementById('sliderPrev');
-            const nextBtn = document.getElementById('sliderNext');
-            let currentIndex = 0;
-            let intervalId = null;
-            const slideInterval = 5000; // 5 секунд
-
-            function goToSlide(index) {
-                // Снимаем активный класс со всех слайдов
-                slides.forEach(s => s.classList.remove('active'));
-                dots.forEach(d => d.classList.remove('active'));
-
-                // Добавляем активный класс текущему слайду
-                slides[index].classList.add('active');
-                dots[index].classList.add('active');
-                currentIndex = index;
-            }
-
-            function nextSlide() {
-                const nextIndex = (currentIndex + 1) % slides.length;
-                goToSlide(nextIndex);
-            }
-
-            function prevSlide() {
-                const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-                goToSlide(prevIndex);
-            }
-
-            function startAutoplay() {
-                stopAutoplay();
-                intervalId = setInterval(nextSlide, slideInterval);
-            }
-
-            function stopAutoplay() {
-                if (intervalId) {
-                    clearInterval(intervalId);
-                    intervalId = null;
-                }
-            }
-
-            // Обработчики кнопок
-            prevBtn.addEventListener('click', function() {
-                prevSlide();
-                startAutoplay(); // перезапускаем автоплей
-            });
-
-            nextBtn.addEventListener('click', function() {
-                nextSlide();
-                startAutoplay(); // перезапускаем автоплей
-            });
-
-            // Обработчики точек
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', function() {
-                    goToSlide(index);
-                    startAutoplay(); // перезапускаем автоплей
+            if (typeof Swiper !== 'undefined') {
+                const swiper = new Swiper('.mySwiper', {
+                    loop: true,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    effect: 'fade',
+                    fadeEffect: {
+                        crossFade: true,
+                    },
                 });
-            });
-
-            // Пауза при наведении на слайдер
-            const sliderContainer = document.querySelector('.slider-container');
-            sliderContainer.addEventListener('mouseenter', stopAutoplay);
-            sliderContainer.addEventListener('mouseleave', startAutoplay);
-
-            // Запускаем автоплей
-            startAutoplay();
+                console.log('✅ Swiper инициализирован');
+            } else {
+                console.warn('⚠️ Swiper не загружен');
+            }
         });
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 </html>
